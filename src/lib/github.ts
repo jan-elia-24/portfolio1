@@ -38,7 +38,7 @@ export async function fetchRepos(username: string, limit = 12): Promise<Featured
       tags: r.topics?.length ? r.topics : r.language ? [r.language] : [],
       repo: r.html_url,
       demo: r.homepage || undefined,
-      cover: undefined,
+      cover: `https://opengraph.githubassets.com/1/jan-elia-24/${r.name}`,
     }));
 }
 

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { fetchRepo } from "@/lib/github";
 import { notFound } from "next/navigation";
 import BackToProjects from "@/components/back-to-projects";
+import CaseToc from "@/components/case-toc";
 
 type Props = { params: { slug: string } };
 
@@ -19,7 +20,7 @@ export default async function ProjectDetail({ params }: Props) {
     <article className="relative">
       <PageBg src="/bg/project-detail.jpg" dim={0.6} />
 
-      <header className="mx-auto max-w-5xl px-4 pt-20 pb-10">
+      <header className="mx-auto max-w-5xl px-4 pt-20 pb-8">
         <h1 className="text-4xl font-bold">{repo.name}</h1>
         <p className="mt-2 text-neutral-300 max-w-2xl">
           {repo.description || "No description provided."}
@@ -49,11 +50,13 @@ export default async function ProjectDetail({ params }: Props) {
         </div>
       </header>
 
-      <section className="mx-auto max-w-5xl px-4 pb-20 grid gap-10">
-        {/* Back button and GitHub Open Graph cover */}
-        <BackToProjects />
-        
-        <div className="mx-auto max-w-5xl px-4">
+      <div className="mx-auto max-w-6xl px-4 pb-20 grid lg:grid-cols-[1fr_minmax(0,1.6fr)] gap-8">
+        <CaseToc />
+
+        <div className="grid gap-10">
+          {/* Back button and Hero cover */}
+          <BackToProjects />
+          
           <div className="overflow-hidden rounded-2xl border border-white/10">
             <img
               src={`https://opengraph.githubassets.com/1/jan-elia-24/${repo.name}`}
@@ -62,40 +65,39 @@ export default async function ProjectDetail({ params }: Props) {
               loading="lazy"
             />
           </div>
+
+          <section id="overview">
+            <h2 className="text-xl font-semibold">Overview</h2>
+            <p className="mt-2 text-neutral-300">
+              Brief summary of the project goal, target users, and outcome.
+            </p>
+          </section>
+
+          <section id="role-stack">
+            <h2 className="text-xl font-semibold">Role & Stack</h2>
+            <ul className="mt-2 text-neutral-300 list-disc pl-5">
+              <li>Role: Developer / Designer</li>
+              <li>Stack: Next.js, React, Tailwind, Node, C#, Java (adapt per project)</li>
+            </ul>
+          </section>
+
+          <section id="features">
+            <h2 className="text-xl font-semibold">Key Features</h2>
+            <ul className="mt-2 text-neutral-300 list-disc pl-5">
+              <li>Feature 1 — short description</li>
+              <li>Feature 2 — short description</li>
+              <li>Feature 3 — short description</li>
+            </ul>
+          </section>
+
+          <section id="learnings">
+            <h2 className="text-xl font-semibold">Challenges & Learnings</h2>
+            <p className="mt-2 text-neutral-300">
+              What was tricky? How did you solve it? What did you learn?
+            </p>
+          </section>
         </div>
-
-        {/* Case sections */}
-        <section>
-          <h2 className="text-xl font-semibold">Overview</h2>
-          <p className="mt-2 text-neutral-300">
-            Brief summary of the project goal, target users, and outcome.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-semibold">Role & Stack</h2>
-          <ul className="mt-2 text-neutral-300 list-disc pl-5">
-            <li>Role: Developer / Designer</li>
-            <li>Stack: Next.js, React, Tailwind, Node, C#, Java (adapt per project)</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-semibold">Key Features</h2>
-          <ul className="mt-2 text-neutral-300 list-disc pl-5">
-            <li>Feature 1 — short description</li>
-            <li>Feature 2 — short description</li>
-            <li>Feature 3 — short description</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-semibold">Challenges & Learnings</h2>
-          <p className="mt-2 text-neutral-300">
-            What was tricky? How did you solve it? What did you learn?
-          </p>
-        </section>
-      </section>
+      </div>
     </article>
   );
 }
