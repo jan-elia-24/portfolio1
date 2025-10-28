@@ -3,6 +3,7 @@ import FeaturedCard from "@/components/featured-card";
 import { featured } from "@/lib/featured-projects";
 import ContactForm from "@/components/contact-form";
 import PageBg from "@/components/page-bg";
+import Reveal from "@/components/reveal";
 
 export default function HomePage() {
   return (
@@ -11,12 +12,16 @@ export default function HomePage() {
       <HeroSplit />
 
       <section id="projects" className="mx-auto max-w-6xl px-4 py-16">
+        <Reveal>
         <h2 className="text-2xl font-semibold mb-6">Featured Projects</h2>
+        </Reveal>
+        <Reveal>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {featured.slice(0, 6).map((p) => (
             <FeaturedCard key={p.slug} p={p} />
           ))}
         </div>
+        </Reveal>
       </section>
 
       <section id="contact" className="mx-auto max-w-6xl px-4 py-16">
