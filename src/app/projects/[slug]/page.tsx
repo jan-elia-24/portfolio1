@@ -2,6 +2,7 @@ import PageBg from "@/components/page-bg";
 import Link from "next/link";
 import { fetchRepo } from "@/lib/github";
 import { notFound } from "next/navigation";
+import BackToProjects from "@/components/back-to-projects";
 
 type Props = { params: { slug: string } };
 
@@ -49,8 +50,19 @@ export default async function ProjectDetail({ params }: Props) {
       </header>
 
       <section className="mx-auto max-w-5xl px-4 pb-20 grid gap-10">
-        {/* Hero cover placeholder */}
-        <div className="aspect-video rounded-2xl border border-white/10 bg-neutral-900/40" />
+        {/* Back button and GitHub Open Graph cover */}
+        <BackToProjects />
+        
+        <div className="mx-auto max-w-5xl px-4">
+          <div className="overflow-hidden rounded-2xl border border-white/10">
+            <img
+              src={`https://opengraph.githubassets.com/1/jan-elia-24/${repo.name}`}
+              alt={`${repo.name} cover`}
+              className="w-full h-auto block"
+              loading="lazy"
+            />
+          </div>
+        </div>
 
         {/* Case sections */}
         <section>
