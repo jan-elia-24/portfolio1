@@ -4,6 +4,7 @@ import { fetchRepo } from "@/lib/github";
 import { notFound } from "next/navigation";
 import BackToProjects from "@/components/back-to-projects";
 import CaseToc from "@/components/case-toc";
+import { formatLocalDate } from "@/lib/date";
 
 type Props = { params: { slug: string } };
 
@@ -47,6 +48,23 @@ export default async function ProjectDetail({ params }: Props) {
               Live demo ↗
             </Link>
           )}
+        </div>
+
+        {/* Last updated and Edit on GitHub */}
+        <div className="mt-6 flex flex-wrap items-center gap-3 text-sm text-neutral-400">
+          <span>
+            Last updated: {repo.pushed_at ? formatLocalDate(repo.pushed_at) : "—"}
+          </span>
+
+          <span className="opacity-30">•</span>
+
+          <a
+            href={`https://github.com/jan-elia-24/${repo.name}/edit/main/README.md`}
+            target="_blank"
+            className="text-emerald-400 hover:underline"
+          >
+            Edit README on GitHub ↗
+          </a>
         </div>
       </header>
 
