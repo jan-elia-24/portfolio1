@@ -1,23 +1,59 @@
 "use client";
 import { useState } from "react";
+import { toast } from "sonner";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
     "idle"
   );
 
-  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setStatus("sending");
     const form = e.currentTarget;
     const res = await fetch("/api/contact", {
       method: "POST",
       body: new FormData(form),
     });
 
-    setStatus(res.ok ? "sent" : "error");
-    if (res.ok) form.reset();
+    if (res.ok) {
+    toast.success(
+      <div className="flex flex-col gap-1">
+        <p className="text-base font-semibold text-emerald-400">
+          Message sent! 🚀
+        </p>
+        <p className="text-sm text-neutral-300">
+          I’ll get back to you as soon as possible.
+        </p>
+      </div>,
+      {
+        style: {
+          background: "rgba(10,10,10,0.85)",
+          border: "1px solid rgba(16,185,129,0.4)",
+          boxShadow: "0 0 20px rgba(16,185,129,0.2)",
+        },
+        duration: 4000,
+      }
+    );
+    form.reset();
+  } else {
+    toast.error(
+      <div className="flex flex-col gap-1">
+        <p className="text-base font-semibold text-red-400">Oops 😬</p>
+        <p className="text-sm text-neutral-300">
+          Something went wrong — try again!
+        </p>
+      </div>,
+      {
+        style: {
+          background: "rgba(20,0,0,0.9)",
+          border: "1px solid rgba(239,68,68,0.4)",
+          boxShadow: "0 0 20px rgba(239,68,68,0.2)",
+        },
+        duration: 4000,
+      }
+    );
   }
+};
 
   return (
     <form onSubmit={onSubmit} className="grid gap-3 max-w-lg">
