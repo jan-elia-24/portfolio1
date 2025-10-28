@@ -12,9 +12,9 @@ export default function Timeline({ items }: { items: Item[] }) {
       {items.map((it, i) => (
         <li key={i} className="group">
           <span className="absolute -left-[9px] top-1.5 size-2.5 rounded-full bg-emerald-400 shadow-[0_0_14px_rgba(16,185,129,.6)]" />
-          <div className="flex flex-wrap items-baseline gap-x-3">
+          <div>
             <h3 className="text-lg font-semibold">{it.title}</h3>
-            <span className="text-sm text-neutral-400">{it.org}</span>
+            <div className="text-sm text-neutral-400 mt-1">{it.org}</div>
           </div>
           <div className="mt-1 text-sm text-neutral-400">
             <span>{it.period}</span>

@@ -5,10 +5,10 @@ import { useCallback } from "react";
 
 const experience = [
   {
-    period: "2025 — Present",
-    title: "Full-Stack Developer (Portfolio & Open-Source)",
-    org: "Next.js · React · Angular · Node · C# · Java",
-    location: "Remote · Sweden",
+    period: "2025",
+    title: "Portfolio & Open-Source (Full-Stack Developer)",
+    org: "Next.js · React  · Node · Tailwind · Resend",
+    location: "Project",
     bullets: [
       "Built a dynamic portfolio with GitHub integration, case-studies, and SSR.",
       "Designed premium UX: page transitions, scroll reveal, cursor glow/trail, animated toasts.",
@@ -30,7 +30,7 @@ const experience = [
     period: "2025",
     title: "Kino – Cinema Site (SSR)",
     org: "Node.js · Pug · Integration tests",
-    location: "Project",
+    location: "Group Project",
     bullets: [
       "Server-rendered movie pages from API with dynamic routes and error handling.",
       "Wrote integration tests to verify titles and HTTP status for not-found pages.",
