@@ -2,30 +2,43 @@
 import { useState } from "react";
 
 export default function ContactForm() {
-  const [status, setStatus] = useState<"idle"|"sending"|"sent"|"error">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
+    "idle"
+  );
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("sending");
-    const form = new FormData(e.currentTarget);
-    const res = await fetch("/api/contact", { method: "POST", body: form });
+    const form = e.currentTarget;
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      body: new FormData(form),
+    });
 
     setStatus(res.ok ? "sent" : "error");
-    if (res.ok) (e.currentTarget as HTMLFormElement).reset();
+    if (res.ok) form.reset();
   }
 
   return (
     <form onSubmit={onSubmit} className="grid gap-3 max-w-lg">
       <input
-        required name="name" placeholder="Name"
+        required
+        name="name"
+        placeholder="Name"
         className="rounded-xl px-3 py-2 border border-white/10 bg-black/30 backdrop-blur"
       />
       <input
-        required type="email" name="email" placeholder="Email"
+        required
+        type="email"
+        name="email"
+        placeholder="Email"
         className="rounded-xl px-3 py-2 border border-white/10 bg-black/30 backdrop-blur"
       />
       <textarea
-        required name="message" rows={5} placeholder="Message"
+        required
+        name="message"
+        rows={5}
+        placeholder="Message"
         className="rounded-xl px-3 py-2 border border-white/10 bg-black/30 backdrop-blur"
       />
       <button
@@ -35,8 +48,12 @@ export default function ContactForm() {
         {status === "sending" ? "Sending…" : "Send"}
       </button>
 
-      {status === "sent" && <p className="text-emerald-400">Thanks! I’ll get back to you soon.</p>}
-      {status === "error" && <p className="text-red-400">Something went wrong. Please try again.</p>}
+      {status === "sent" && (
+        <p className="text-emerald-400">Thanks! I’ll get back to you soon.</p>
+      )}
+      {status === "error" && (
+        <p className="text-red-400">Something went wrong. Please try again.</p>
+      )}
     </form>
   );
 }
