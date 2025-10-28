@@ -22,7 +22,9 @@ export default function FeaturedCard({ p }: { p: Featured }) {
   }
 
   function resetTilt() {
-    mx.set(0); my.set(0); setHover(false);
+    mx.set(0);
+    my.set(0);
+    setHover(false);
   }
 
   return (
@@ -46,10 +48,10 @@ export default function FeaturedCard({ p }: { p: Featured }) {
             src={p.cover || "/placeholder.jpg"}
             alt={p.title}
             fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="object-cover transition-transform duration-500 group-hover:scale-105"
             priority={false}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
         </div>
       </Link>
 
@@ -69,11 +71,19 @@ export default function FeaturedCard({ p }: { p: Featured }) {
         </div>
 
         <div className="mt-4 flex gap-4 text-sm">
-          <Link href={p.repo} target="_blank" className="text-emerald-400 hover:underline">
+          <Link
+            href={p.repo}
+            target="_blank"
+            className="text-emerald-400 hover:underline"
+          >
             GitHub ↗
           </Link>
           {p.demo && (
-            <Link href={p.demo} target="_blank" className="text-emerald-400 hover:underline">
+            <Link
+              href={p.demo}
+              target="_blank"
+              className="text-emerald-400 hover:underline"
+            >
               Demo ↗
             </Link>
           )}

@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import BackToProjects from "@/components/back-to-projects";
 import CaseToc from "@/components/case-toc";
 import { formatLocalDate } from "@/lib/date";
+import Image from "next/image";
 
 type Props = { params: { slug: string } };
 
@@ -33,18 +34,29 @@ export default async function ProjectDetail({ params }: Props) {
             </span>
           )}
           {(repo.topics || []).map((t: string) => (
-            <span key={t} className="rounded-full border border-white/15 bg-black/30 px-2 py-1">
+            <span
+              key={t}
+              className="rounded-full border border-white/15 bg-black/30 px-2 py-1"
+            >
               {t}
             </span>
           ))}
         </div>
 
         <div className="mt-6 flex gap-4 text-sm">
-          <Link href={repo.html_url} target="_blank" className="text-emerald-400 hover:underline">
+          <Link
+            href={repo.html_url}
+            target="_blank"
+            className="text-emerald-400 hover:underline"
+          >
             GitHub ↗
           </Link>
           {repo.homepage && (
-            <Link href={repo.homepage} target="_blank" className="text-emerald-400 hover:underline">
+            <Link
+              href={repo.homepage}
+              target="_blank"
+              className="text-emerald-400 hover:underline"
+            >
               Live demo ↗
             </Link>
           )}
@@ -53,7 +65,8 @@ export default async function ProjectDetail({ params }: Props) {
         {/* Last updated and Edit on GitHub */}
         <div className="mt-6 flex flex-wrap items-center gap-3 text-sm text-neutral-400">
           <span>
-            Last updated: {repo.pushed_at ? formatLocalDate(repo.pushed_at) : "—"}
+            Last updated:{" "}
+            {repo.pushed_at ? formatLocalDate(repo.pushed_at) : "—"}
           </span>
 
           <span className="opacity-30">•</span>
@@ -74,13 +87,15 @@ export default async function ProjectDetail({ params }: Props) {
         <div className="grid gap-10">
           {/* Back button and Hero cover */}
           <BackToProjects />
-          
+
           <div className="overflow-hidden rounded-2xl border border-white/10">
-            <img
+            <Image
               src={`https://opengraph.githubassets.com/1/jan-elia-24/${repo.name}`}
               alt={`${repo.name} cover`}
+              width={1200}
+              height={630}
+              sizes="(max-width: 768px) 100vw, 960px"
               className="w-full h-auto block"
-              loading="lazy"
             />
           </div>
 
@@ -95,7 +110,10 @@ export default async function ProjectDetail({ params }: Props) {
             <h2 className="text-xl font-semibold">Role & Stack</h2>
             <ul className="mt-2 text-neutral-300 list-disc pl-5">
               <li>Role: Developer / Designer</li>
-              <li>Stack: Next.js, React, Tailwind, Node, C#, Java (adapt per project)</li>
+              <li>
+                Stack: Next.js, React, Tailwind, Node, C#, Java (adapt per
+                project)
+              </li>
             </ul>
           </section>
 

@@ -23,7 +23,7 @@ export async function fetchRepos(
         "X-GitHub-Api-Version": "2022-11-28",
         Authorization: `Bearer ${process.env.GITHUB_TOKEN}`, 
       },
-      next: { revalidate: 3600 },
+      next: { revalidate: 600 },
     }
   );
   console.log('Response status:', res.status);  // ← DEBUG
@@ -54,7 +54,7 @@ export async function fetchRepo(owner: string, name: string) {
         ? { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` }
         : {}),
     },
-    next: { revalidate: 3600 },
+    next: { revalidate: 600 },
   });
   if (res.status === 404) return null;
   if (!res.ok) throw new Error(`GitHub error ${res.status}`);

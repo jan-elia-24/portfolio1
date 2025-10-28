@@ -172,3 +172,8 @@ html {
 .nav-link:hover::after { width:100%; }
 .nav-link.is-active { color:#a7f3d0; }           
 .nav-link.is-active::after { width:100%; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+

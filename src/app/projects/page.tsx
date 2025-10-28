@@ -3,6 +3,8 @@ import ProjectSkeleton from "@/components/project-skeleton";
 import { Suspense } from "react";
 import ProjectsGrid from "./projects-grid";
 
+export const revalidate = 600;
+
 function SkeletonGrid() {
   return (
     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
