@@ -1,76 +1,89 @@
-import Image from "next/image";
-import Link from "next/link";
-import { notFound } from "next/navigation";
-import { featured } from "@/lib/featured-projects";
 import PageBg from "@/components/page-bg";
+import Link from "next/link";
+import { fetchRepo } from "@/lib/github";
+import { notFound } from "next/navigation";
 
-type Props = {
-  params: { slug: string };
-};
+type Props = { params: { slug: string } };
 
-export default function ProjectPage({ params }: Props) {
-  const project = featured.find((p) => p.slug === params.slug);
+export async function generateMetadata({ params }: Props) {
+  const title = `${params.slug} – Case Study`;
+  return { title, description: `Case study for ${params.slug}` };
+}
 
-  if (!project) return notFound();
+export default async function ProjectDetail({ params }: Props) {
+  const repo = await fetchRepo("jan-elia-24", params.slug);
+  if (!repo) return notFound();
 
   return (
-    <>
-    <PageBg src="/bg/cv.jpg" dim={0.6} />
     <article className="relative">
-      {/* Hero Section */}
-      <div className="relative h-[60vh] w-full overflow-hidden">
-        <Image
-          src={project.cover || "/placeholder.jpg"}
-          alt={project.title}
-          fill
-          className="object-cover brightness-75"
-          priority
-        />
-        <div className="absolute inset-0 bg-linear-to-t from-black/70 to-black/20" />
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-center px-4">
-          <h1 className="text-4xl font-bold text-white drop-shadow-lg">
-            {project.title}
-          </h1>
-        </div>
-      </div>
+      <PageBg src="/bg/project-detail.jpg" dim={0.6} />
 
-      {/* Content */}
-      <section className="mx-auto max-w-4xl px-4 py-12">
-        <p className="text-neutral-300 leading-relaxed text-lg">
-          {project.blurb}
+      <header className="mx-auto max-w-5xl px-4 pt-20 pb-10">
+        <h1 className="text-4xl font-bold">{repo.name}</h1>
+        <p className="mt-2 text-neutral-300 max-w-2xl">
+          {repo.description || "No description provided."}
         </p>
-
-        <div className="mt-6 flex flex-wrap gap-3">
-          {project.tags.map((t) => (
-            <span
-              key={t}
-              className="text-xs px-3 py-1.5 rounded-full border border-white/15 bg-black/40 backdrop-blur-sm"
-            >
+        <div className="mt-4 flex flex-wrap gap-3 text-sm">
+          {repo.language && (
+            <span className="rounded-full border border-white/15 bg-black/30 px-2 py-1">
+              {repo.language}
+            </span>
+          )}
+          {(repo.topics || []).map((t: string) => (
+            <span key={t} className="rounded-full border border-white/15 bg-black/30 px-2 py-1">
               {t}
             </span>
           ))}
         </div>
 
-        <div className="mt-8 flex gap-4">
-          <Link
-            href={project.repo}
-            target="_blank"
-            className="px-4 py-2 rounded-xl bg-emerald-500 text-black font-medium hover:bg-emerald-400"
-          >
+        <div className="mt-6 flex gap-4 text-sm">
+          <Link href={repo.html_url} target="_blank" className="text-emerald-400 hover:underline">
             GitHub ↗
           </Link>
-          {project.demo && (
-            <Link
-              href={project.demo}
-              target="_blank"
-              className="px-4 py-2 rounded-xl border border-white/15 hover:bg-white/10"
-            >
-              Live Demo ↗
+          {repo.homepage && (
+            <Link href={repo.homepage} target="_blank" className="text-emerald-400 hover:underline">
+              Live demo ↗
             </Link>
           )}
         </div>
+      </header>
+
+      <section className="mx-auto max-w-5xl px-4 pb-20 grid gap-10">
+        {/* Hero cover placeholder */}
+        <div className="aspect-video rounded-2xl border border-white/10 bg-neutral-900/40" />
+
+        {/* Case sections */}
+        <section>
+          <h2 className="text-xl font-semibold">Overview</h2>
+          <p className="mt-2 text-neutral-300">
+            Brief summary of the project goal, target users, and outcome.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold">Role & Stack</h2>
+          <ul className="mt-2 text-neutral-300 list-disc pl-5">
+            <li>Role: Developer / Designer</li>
+            <li>Stack: Next.js, React, Tailwind, Node, C#, Java (adapt per project)</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold">Key Features</h2>
+          <ul className="mt-2 text-neutral-300 list-disc pl-5">
+            <li>Feature 1 — short description</li>
+            <li>Feature 2 — short description</li>
+            <li>Feature 3 — short description</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold">Challenges & Learnings</h2>
+          <p className="mt-2 text-neutral-300">
+            What was tricky? How did you solve it? What did you learn?
+          </p>
+        </section>
       </section>
     </article>
-    </>
   );
 }

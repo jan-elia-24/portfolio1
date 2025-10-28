@@ -30,7 +30,7 @@ export async function fetchRepos(username: string, limit = 12): Promise<Featured
   const data: GhRepo[] = await res.json();
 
   return data
-    .filter((r) => !r.fork) // ignore forks
+    .filter((r) => !r.fork)
     .map<Featured>((r) => ({
       slug: r.name,
       title: r.name,
@@ -40,4 +40,18 @@ export async function fetchRepos(username: string, limit = 12): Promise<Featured
       demo: r.homepage || undefined,
       cover: undefined,
     }));
+}
+
+export async function fetchRepo(owner: string, name: string) {
+  const res = await fetch(`https://api.github.com/repos/${owner}/${name}`, {
+    headers: {
+      Accept: "application/vnd.github+json",
+      "X-GitHub-Api-Version": "2022-11-28",
+      ...(process.env.GITHUB_TOKEN ? { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` } : {}),
+    },
+    next: { revalidate: 3600 },
+  });
+  if (res.status === 404) return null;
+  if (!res.ok) throw new Error(`GitHub error ${res.status}`);
+  return res.json();
 }
