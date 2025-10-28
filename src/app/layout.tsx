@@ -6,8 +6,43 @@ import PageTransition from "@/components/page-transition";
 import NextTopLoader from "nextjs-toploader";
 
 export const metadata: Metadata = {
-  title: "Jan Elia – Portfolio",
-  description: "Full-stack dev • Next.js, React, Angular, Node, C#, Java",
+  metadataBase: new URL("https://jan-elia.dev"), // change to your domain later (or Vercel URL)
+  title: {
+    default: "Jan Elia – Portfolio",
+    template: "%s | Jan Elia",
+  },
+  description:
+    "Full-stack developer crafting modern web experiences with Next.js, React, Angular, Node, C#, and Java.",
+  keywords: [
+    "Jan Elia",
+    "Full-stack developer",
+    "Next.js",
+    "React",
+    "Angular",
+    "Node",
+    "C#",
+    "Java",
+    "Portfolio",
+  ],
+  authors: [{ name: "Jan Elia" }],
+  openGraph: {
+    title: "Jan Elia – Portfolio",
+    description:
+      "Modern web apps where design meets performance and code feels alive.",
+    url: "https://jan-elia.dev",
+    siteName: "Jan Elia – Portfolio",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Jan Elia – Portfolio",
+    description:
+      "Modern web apps where design meets performance and code feels alive.",
+  },
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
