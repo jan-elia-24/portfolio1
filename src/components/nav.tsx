@@ -50,9 +50,7 @@ export default function Nav() {
                       window.location.hash = "#contact";
                     }
                   }}
-                  className={`hover:opacity-100 opacity-80 transition ${
-                    isActive ? "underline underline-offset-4" : ""
-                  }`}
+                  className={`nav-link ${isActive ? "is-active" : ""}`}
                 >
                   {l.label}
                 </Link>

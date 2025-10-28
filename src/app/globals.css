@@ -156,3 +156,19 @@ html {
   .print\:px-8 { padding-left: 2rem !important; padding-right: 2rem !important; }
   .print\:py-10 { padding-top: 2.5rem !important; padding-bottom: 2.5rem !important; }
 }
+
+/* Animated nav underline */
+.nav-link {
+  position: relative;
+  transition: color .2s ease;
+}
+.nav-link::after {
+  content:"";
+  position:absolute; left:0; bottom:-6px;
+  height:2px; width:0%;
+  background: linear-gradient(90deg, rgba(16,185,129,.9), rgba(16,185,129,.4));
+  transition: width .25s ease;
+}
+.nav-link:hover::after { width:100%; }
+.nav-link.is-active { color:#a7f3d0; }           
+.nav-link.is-active::after { width:100%; }
