@@ -7,9 +7,13 @@ import type { Featured } from "@/lib/featured-projects";
 export default function FeaturedCard({ p }: { p: Featured }) {
   return (
     <motion.div
-      whileHover={{ scale: 1.03, rotateX: 4, rotateY: -3 }}
-      transition={{ type: "spring", stiffness: 200, damping: 15 }}
-      className="group relative overflow-hidden rounded-3xl border border-white/10 bg-neutral-900/40 hover:border-emerald-400/50 transition will-change-transform"
+      whileHover={{
+        y: -6,
+        scale: 1.03,
+        boxShadow: "0 0 25px rgba(16,185,129,0.25)",
+      }}
+      transition={{ type: "spring", stiffness: 200, damping: 12 }}
+      className="rounded-2xl border border-white/10 bg-neutral-900/40 p-4 cursor-pointer backdrop-blur-md hover:border-emerald-500/40 transition"
     >
       {/* cover image */}
       <div className="relative aspect-video overflow-hidden">
@@ -27,9 +31,7 @@ export default function FeaturedCard({ p }: { p: Featured }) {
         <h3 className="text-xl font-semibold text-white drop-shadow-md">
           {p.title}
         </h3>
-        <p className="text-sm text-neutral-300 mt-1 line-clamp-2">
-          {p.blurb}
-        </p>
+        <p className="text-sm text-neutral-300 mt-1 line-clamp-2">{p.blurb}</p>
 
         <div className="mt-3 flex flex-wrap gap-2">
           {p.tags.map((t) => (
