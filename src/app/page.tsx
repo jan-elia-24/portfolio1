@@ -1,17 +1,19 @@
 import Hero from "@/components/hero";
-import ProjectCard from "@/components/project-card";
-import { projects } from "@/lib/projects";
+import FeaturedCard from "@/components/featured-card";
+import { featured } from "@/lib/featured-projects";
 
 export default function HomePage() {
+  const featuredProjects = featured.slice(0, 6);
+
   return (
     <>
       <Hero />
 
       <section id="projects" className="mx-auto max-w-6xl px-4 py-16">
         <h2 className="text-2xl font-semibold mb-6">Utvalda projekt</h2>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((p) => (
-            <ProjectCard key={p.slug} p={p} />
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {featuredProjects.map((p) => (
+            <FeaturedCard key={p.slug} p={p} />
           ))}
         </div>
       </section>
