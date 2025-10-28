@@ -24,3 +24,5 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+*:focus-visible { outline: 2px solid rgba(255,255,255,.5); outline-offset: 2px; }
