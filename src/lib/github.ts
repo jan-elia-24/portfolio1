@@ -1,3 +1,5 @@
+import type { Featured } from "@/lib/featured-projects";
+
 export type GhRepo = {
   name: string;
   description: string | null;
@@ -9,9 +11,9 @@ export type GhRepo = {
   fork: boolean;
 };
 
-export async function fetchRepos(username: string, limit = 12) {
+export async function fetchRepos(username: string, limit = 12): Promise<Featured[]> {
   const res = await fetch(
-    `https://api.github.com/users/jan-elia-24/repos?sort=updated&per_page=${limit}`,
+    `https://api.github.com/users/${username}/repos?sort=updated&per_page=${limit}`,
     {
       headers: {
         Accept: "application/vnd.github+json",
@@ -20,23 +22,22 @@ export async function fetchRepos(username: string, limit = 12) {
           ? { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` }
           : {}),
       },
-      next: { revalidate: 3600 }, // cache 1 h
+      next: { revalidate: 3600 },
     }
   );
+  if (!res.ok) throw new Error(`GitHub API error: ${res.status}`);
 
-  if (!res.ok) {
-    throw new Error(`GitHub API error: ${res.status}`);
-  }
+  const data: GhRepo[] = await res.json();
 
-  const data = (await res.json()) as GhRepo[];
   return data
-    .filter((r) => !r.fork)
-    .map((r) => ({
+    .filter((r) => !r.fork) // ignore forks
+    .map<Featured>((r) => ({
+      slug: r.name,
       title: r.name,
       blurb: r.description ?? "—",
+      tags: r.topics?.length ? r.topics : r.language ? [r.language] : [],
       repo: r.html_url,
       demo: r.homepage || undefined,
-      tags: r.topics && r.topics.length ? r.topics : r.language ? [r.language] : [],
-      updated: r.pushed_at,
+      cover: undefined,
     }));
 }
