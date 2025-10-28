@@ -6,13 +6,64 @@ import { useCallback } from "react";
 const experience = [
   {
     period: "2025 — Present",
-    title: "Full-Stack Developer (Student Projects)",
-    org: "Next.js, React, Angular, Node, C#, Java",
-    location: "Remote • Sweden",
+    title: "Full-Stack Developer (Portfolio & Open-Source)",
+    org: "Next.js · React · Angular · Node · C# · Java",
+    location: "Remote · Sweden",
     bullets: [
-      "Built dynamic portfolio with GitHub integration, case studies and SSR.",
-      "Designed smooth UX: page transitions, cursor glow/trail, scroll reveal.",
-      "Implemented email contact flow with Resend + toasts.",
+      "Built a dynamic portfolio with GitHub integration, case-studies, and SSR.",
+      "Designed premium UX: page transitions, scroll reveal, cursor glow/trail, animated toasts.",
+      "Implemented email flow with Resend; added SEO, sitemap, OG cards.",
+    ],
+  },
+  {
+    period: "2025",
+    title: "BookBreeze – Book CRUD App with Auth",
+    org: "Angular 20 · .NET 9 API · JWT · Bootstrap",
+    location: "Project",
+    bullets: [
+      "Full-stack book management: create, edit, delete with JWT authentication.",
+      "Separate 'My Quotes' view, dark mode, responsive navbar, and 404 page.",
+      "Deployed frontend on Vercel, API on Render with in-memory storage.",
+    ],
+  },
+  {
+    period: "2025",
+    title: "Kino – Cinema Site (SSR)",
+    org: "Node.js · Pug · Integration tests",
+    location: "Project",
+    bullets: [
+      "Server-rendered movie pages from API with dynamic routes and error handling.",
+      "Wrote integration tests to verify titles and HTTP status for not-found pages.",
+    ],
+  },
+  {
+    period: "2025",
+    title: "Wordle-Style Game (Full-Stack)",
+    org: "React · Node/Express · MongoDB · EJS",
+    location: "Project",
+    bullets: [
+      "Color-feedback engine, timer/attempts, and server-rendered high scores.",
+      "Added deterministic tests by mocking word randomization.",
+    ],
+  },
+  {
+    period: "2025",
+    title: "ESC_HER – Website Redesign",
+    org: "Responsive UI · GitHub collaboration",
+    location: "Group Project",
+    bullets: [
+      "Led code structure, animations, and accessibility tweaks across views.",
+      "Improved desktop/mobile parity and content order as per stakeholder brief.",
+    ],
+  },
+  {
+    period: "2025",
+    title: "Warehouse Product Manager (CRUD)",
+    org: "Angular 20 · .NET 9 API",
+    location: "Project",
+    bullets: [
+      "JWT-protected API, optimistic UI updates, and typed client models.",
+      "Built CI-friendly structure and modular feature routing.",
     ],
   },
   {
@@ -21,41 +72,46 @@ const experience = [
     org: "Lernia YH – Systemutvecklare",
     location: "Distance (Piteå)",
     bullets: [
-      "OOAD, REST, async JS, SSR, CI/CD, Mongo/SQL, testing.",
-      "Group projects: ESC_HER, Kino, Wordle clone w/ highscores.",
+      "OOAD, REST, async JS, SSR, testing, Git/GitHub, CI/CD.",
+      "Hands-on labs: DI container, logging, MySQL (Sakila) connectivity.",
     ],
   },
 ];
 
 const education = [
   {
-    period: "2024 — 2026",
-    title: "Systemutvecklare Java & JavaScript (YH)",
-    org: "Lernia",
-    location: "SE",
-    bullets: ["Focus: Next.js, Angular, Node, Java 24/25, testing & deployment."],
+    period: "2024 — 2026 (expected)",
+    title: "System Developer — Java & JavaScript",
+    org: "Lernia Yrkeshögskola",
+    location: "Sweden",
+    bullets: [
+      "Focus: Next.js/React, Angular, Node/Express, Java 24/25, databases, testing.",
+      "Upcoming LIA (internship): Feb–May 2026 — open to full-stack roles.",
+    ],
   },
 ];
 
 const skills = [
-  "Next.js", "React", "Angular", "Tailwind", "Node", "Express",
-  "C#", ".NET", "Java 24/25", "REST", "MongoDB", "SQL", "Git/GitHub",
+  "Next.js", "React", "Angular", "Tailwind",
+  "Node.js", "Express", "C#", ".NET 9",
+  "Java 24/25", "REST APIs", "MongoDB", "SQL",
+  "Testing", "Git/GitHub", "CI/CD",
 ];
 
 const jobExperience = [
   {
-    period: "sep. 2023 - nu · 2 år 2 mån",
+    period: "Sep 2023 - Present · 2 yrs 2 mos",
     title: "Superuser",
     org: "Health and Sports Nutrition Group AB",
-    location: "Eskilstuna, Södermanlands län, Sverige",
-    type: "Heltid",
+    location: "Eskilstuna, Sweden",
+    type: "Full-time",
   },
   {
-    period: "maj 2019 - aug. 2023 · 4 år 4 mån",
-    title: "Säljare/ Driftansvarig",
+    period: "May 2019 - Aug 2023 · 4 yrs 4 mos", 
+    title: "Sales / Operations Manager",
     org: "K-Rauta",
-    location: "Uppsala, Uppsala län, Sverige", 
-    type: "Heltid",
+    location: "Uppsala, Sweden",
+    type: "Full-time",
   },
 ];
 
@@ -112,7 +168,7 @@ export default function CVPage() {
             </section>
 
             <section className="rounded-2xl border border-white/10 bg-black/30 backdrop-blur p-4">
-              <h3 className="font-semibold mb-3">Jobberfarenheter</h3>
+              <h3 className="font-semibold mb-3">Work Experience</h3>
               <div className="space-y-6">
                 {jobExperience.map((job, index) => (
                   <div key={index} className="text-sm">
