@@ -11,20 +11,23 @@ export type GhRepo = {
   fork: boolean;
 };
 
-export async function fetchRepos(username: string, limit = 12): Promise<Featured[]> {
+export async function fetchRepos(
+  username: string,
+  limit = 12
+): Promise<Featured[]> {
   const res = await fetch(
     `https://api.github.com/users/${username}/repos?sort=updated&per_page=${limit}`,
     {
       headers: {
         Accept: "application/vnd.github+json",
         "X-GitHub-Api-Version": "2022-11-28",
-        ...(process.env.GITHUB_TOKEN
-          ? { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` }
-          : {}),
+        Authorization: `Bearer ${process.env.GITHUB_TOKEN}`, 
       },
       next: { revalidate: 3600 },
     }
   );
+  console.log('Response status:', res.status);  // ← DEBUG
+
   if (!res.ok) throw new Error(`GitHub API error: ${res.status}`);
 
   const data: GhRepo[] = await res.json();
@@ -47,7 +50,9 @@ export async function fetchRepo(owner: string, name: string) {
     headers: {
       Accept: "application/vnd.github+json",
       "X-GitHub-Api-Version": "2022-11-28",
-      ...(process.env.GITHUB_TOKEN ? { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` } : {}),
+      ...(process.env.GITHUB_TOKEN
+        ? { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` }
+        : {}),
     },
     next: { revalidate: 3600 },
   });
