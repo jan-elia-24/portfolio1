@@ -8,7 +8,7 @@ export default function Footer() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="LinkedIn"
-          className="opacity-80 hover:opacity-100 transition"
+          className="opacity-80 hover:opacity-100 transition text-neutral-300 hover:text-emerald-400 icon-emerald-glow"
           title="LinkedIn"
         >
           <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -21,7 +21,7 @@ export default function Footer() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="X"
-          className="opacity-80 hover:opacity-100 transition"
+          className="opacity-80 hover:opacity-100 transition text-neutral-300 hover:text-emerald-400 icon-emerald-glow"
           title="X"
         >
           <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -34,7 +34,7 @@ export default function Footer() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="GitHub"
-          className="opacity-80 hover:opacity-100 transition"
+          className="opacity-80 hover:opacity-100 transition text-neutral-300 hover:text-emerald-400 icon-emerald-glow"
           title="GitHub"
         >
           <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
