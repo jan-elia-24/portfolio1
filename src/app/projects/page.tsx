@@ -19,12 +19,12 @@ export default function ProjectsPage() {
   return (
     <>
       <PageBg src="/bg/projects.jpg" dim={0.55} />
-      <section className="mx-auto max-w-6xl px-4 py-20">
+      <main id="main" className="mx-auto max-w-6xl px-4 py-20">
         <h1 className="text-3xl font-bold mb-8">All Projects</h1>
         <Suspense fallback={<SkeletonGrid />}>
           <ProjectsGrid />
         </Suspense>
-      </section>
+      </main>
     </>
   );
 }

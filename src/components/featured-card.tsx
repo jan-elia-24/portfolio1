@@ -74,6 +74,7 @@ export default function FeaturedCard({ p }: { p: Featured }) {
           <Link
             href={p.repo}
             target="_blank"
+            rel="noopener noreferrer"
             className="text-emerald-400 hover:underline"
           >
             GitHub ↗
@@ -82,6 +83,7 @@ export default function FeaturedCard({ p }: { p: Featured }) {
             <Link
               href={p.demo}
               target="_blank"
+              rel="noopener noreferrer"
               className="text-emerald-400 hover:underline"
             >
               Demo ↗

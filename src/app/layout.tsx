@@ -44,7 +44,12 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: "/icon.png",
-    shortcut: "/favicon.ico",
+    shortcut: "/icon.png",
+    apple: "/apple-icon.png",
+  },
+  themeColor: "#0a0a0a",
+  other: {
+    "color-scheme": "dark",
   },
 };
 

@@ -27,6 +27,18 @@ export default function Nav() {
 
   return (
     <nav className="fixed top-0 inset-x-0 z-50 backdrop-blur border-b border-white/10">
+      {/* Smart Skip Link */}
+      <a 
+        href="#main" 
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 bg-black/90 backdrop-blur text-white px-4 py-2 rounded-lg border border-white/10 text-sm font-medium transition-opacity duration-300 focus:opacity-100 opacity-0"
+        onClick={(e) => {
+          e.preventDefault();
+          document.getElementById('main')?.scrollIntoView({ behavior: 'smooth' });
+        }}
+      >
+        Skip to content
+      </a>
+
       <div className="mx-auto max-w-6xl px-4 h-14 flex items-center justify-between">
         <Link href="/" className="font-logo text-2xl">
           JanElia

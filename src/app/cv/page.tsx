@@ -123,7 +123,7 @@ export default function CVPage() {
   return (
     <>
       <PageBg src="/bg/cv.jpg" dim={0.6} />
-      <section className="mx-auto max-w-5xl px-4 py-16 print:px-8 print:py-10">
+      <main id="main" className="mx-auto max-w-5xl px-4 py-16 print:px-8 print:py-10"> 
         {/* Header */}
         <header className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 border-b border-white/10 pb-6 mb-8">
           <div>
@@ -143,7 +143,7 @@ export default function CVPage() {
 
         {/* Grid: Timeline + Sidebar */}
         <div className="grid lg:grid-cols-[minmax(0,1.4fr)_minmax(0,.8fr)] gap-10">
-          <main className="space-y-10">
+          <div className="space-y-10"> 
             <section>
               <h2 className="text-xl font-semibold mb-4">Experience</h2>
               <Timeline items={experience} />
@@ -153,7 +153,7 @@ export default function CVPage() {
               <h2 className="text-xl font-semibold mb-4">Education</h2>
               <Timeline items={education} />
             </section>
-          </main>
+          </div>
 
           <aside className="lg:sticky lg:top-24 h-fit space-y-6">
             <section className="rounded-2xl border border-white/10 bg-black/30 backdrop-blur p-4">
@@ -182,7 +182,7 @@ export default function CVPage() {
             </section>
           </aside>
         </div>
-      </section>
+      </main>
     </>
   );
 }
