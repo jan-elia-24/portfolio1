@@ -25,8 +25,7 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="mt-4 text-neutral-300 max-w-2xl"
         >
-          Jag bygger snabba, mörka och moderna upplevelser med Next.js, React, Node och Java.
-          Scrolla för mer — eller hoppa direkt till projekten.
+          I craft fast, dark and modern digital experiences using Next.js, React, Node, and Java — blending design, performance, and code into something that feels alive.
         </motion.p>
 
         <motion.div
@@ -37,10 +36,10 @@ export default function Hero() {
           className="mt-6 flex flex-wrap gap-3"
         >
           <Link href="/projects" className="px-5 py-2.5 rounded-xl bg-emerald-500 text-black font-medium">
-            Se projekt
+            View Projects
           </Link>
           <Link href="#contact" className="px-5 py-2.5 rounded-xl border border-white/15">
-            Kontakta mig
+            Contact Me
           </Link>
         </motion.div>
       </div>

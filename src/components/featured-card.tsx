@@ -12,7 +12,7 @@ export default function FeaturedCard({ p }: { p: Featured }) {
           fill
           className="object-cover group-hover:scale-110 transition-transform duration-500 ease-out"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent opacity-90" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/40 to-transparent opacity-90" />
       </div>
 
       <div className="absolute inset-0 flex flex-col justify-end p-5">
