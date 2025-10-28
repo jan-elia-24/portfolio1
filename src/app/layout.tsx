@@ -6,6 +6,7 @@ import PageTransition from "@/components/page-transition";
 import NextTopLoader from "nextjs-toploader";
 import CursorGlow from "@/components/cursor-glow";
 import { Toaster } from "sonner";
+import CursorTrail from "@/components/cursor-trail";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://jan-elia.dev"), // change to my domain later (or Vercel URL)
@@ -57,6 +58,7 @@ export default function RootLayout({
       <body className="bg-neutral-950 text-neutral-100 antialiased">
         <NextTopLoader showSpinner={false} height={2} />
         <CursorGlow />
+        <CursorTrail />
         <Toaster
           position="bottom-center"
           toastOptions={{

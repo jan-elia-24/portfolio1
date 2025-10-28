@@ -1,5 +1,3 @@
-"use client";
-import { motion } from "framer-motion";
 import FeaturedCard from "@/components/featured-card";
 import { fetchRepos } from "@/lib/github";
 import Reveal from "@/components/reveal";
