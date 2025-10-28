@@ -1,6 +1,7 @@
 import HeroSplit from "@/components/hero-split";
 import FeaturedCard from "@/components/featured-card";
 import { featured } from "@/lib/featured-projects";
+import ContactForm from "@/components/contact-form";
 
 export default function HomePage() {
   return (
@@ -18,7 +19,12 @@ export default function HomePage() {
 
       <section id="contact" className="mx-auto max-w-6xl px-4 py-16">
         <h2 className="text-2xl font-semibold">Contact</h2>
-        <p className="mt-2 text-neutral-300">Form coming next.</p>
+        <p className="mt-2 text-neutral-300">
+          Want to collaborate or have a question? Send me a message.
+        </p>
+        <div className="mt-6">
+          <ContactForm />
+        </div>
       </section>
     </>
   );
