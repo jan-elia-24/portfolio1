@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Vladimir+Script&display=swap');
+
 
 /* App color variables */
 :root {
@@ -29,4 +31,8 @@ body {
 html {
   scroll-padding-top: 4rem; 
   scroll-behavior: smooth;
+}
+
+.font-logo {
+  font-family: 'Vladimir Script', cursive;
 }

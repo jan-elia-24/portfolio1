@@ -28,8 +28,8 @@ export default function Nav() {
   return (
     <nav className="fixed top-0 inset-x-0 z-50 backdrop-blur border-b border-white/10">
       <div className="mx-auto max-w-6xl px-4 h-14 flex items-center justify-between">
-        <Link href="/" className="font-semibold text-lg">
-          JE
+        <Link href="/" className="font-logo text-2xl">
+          JanElia
         </Link>
 
         <ul className="flex items-center gap-6 text-sm">
@@ -65,7 +65,8 @@ export default function Nav() {
               href="/#contact"
               className="px-3 py-1 rounded-xl bg-emerald-500/90 hover:bg-emerald-400 text-black font-medium transition"
               onClick={() => {
-                if (typeof window !== "undefined") window.location.hash = "#contact";
+                if (typeof window !== "undefined")
+                  window.location.hash = "#contact";
               }}
             >
               Hire Me

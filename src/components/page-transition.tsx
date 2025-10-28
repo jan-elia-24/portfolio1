@@ -3,12 +3,18 @@ import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export default function PageTransition({ children }: { children: React.ReactNode }) {
+export default function PageTransition({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const pathname = usePathname();
   const [reduce, setReduce] = useState(false);
 
   useEffect(() => {
-    setReduce(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    if (typeof window !== "undefined") {
+      setReduce(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    }
   }, []);
 
   if (reduce) return <>{children}</>;
