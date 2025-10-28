@@ -3,10 +3,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const links = [
-  { href: "/", label: "Om mig" },
-  { href: "/projects", label: "Projekt" },
+  { href: "/", label: "About Me" },
+  { href: "/projects", label: "Projects" },
   { href: "/cv", label: "CV" },
-  { href: "#contact", label: "Kontakt" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 export default function Nav() {

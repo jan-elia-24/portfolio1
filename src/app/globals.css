@@ -25,3 +25,8 @@ body {
   outline: 2px solid rgba(255, 255, 255, 0.5);
   outline-offset: 2px;
 }
+
+html {
+  scroll-padding-top: 4rem; 
+  scroll-behavior: smooth;
+}
