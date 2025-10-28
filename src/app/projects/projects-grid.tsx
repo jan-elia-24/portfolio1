@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import FeaturedCard from "@/components/featured-card";
 import { fetchRepos } from "@/lib/github";
+import Reveal from "@/components/reveal";
 
 export default async function ProjectsGrid() {
   const items = await fetchRepos("jan-elia-24", 12);
@@ -10,14 +11,9 @@ export default async function ProjectsGrid() {
   return (
     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
       {items.map((p, i) => (
-        <motion.div
-          key={p.slug}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: i * 0.05, duration: 0.4 }}
-        >
+        <Reveal key={p.slug} delay={i * 0.05}>
           <FeaturedCard p={p} />
-        </motion.div>
+        </Reveal>
       ))}
     </div>
   );
