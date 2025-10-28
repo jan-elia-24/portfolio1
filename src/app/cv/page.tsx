@@ -1,5 +1,7 @@
 import Link from "next/link";
 import Timeline from "@/components/timeline";
+import PageBg from "@/components/page-bg";
+
 
 export const metadata = {
   title: "CV – Jan Elia",
@@ -30,6 +32,8 @@ export default function CVPage() {
   ];
 
   return (
+    <>    
+    <PageBg src="/bg/cv.jpg" dim={0.6} />
     <section className="mx-auto max-w-4xl px-4 py-16">
       <header className="flex items-center justify-between gap-4">
         <h1 className="text-3xl font-bold">Curriculum Vitae</h1>
@@ -65,5 +69,6 @@ export default function CVPage() {
         </div>
       </section>
     </section>
+    </>
   );
 }

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { featured } from "@/lib/featured-projects";
+import PageBg from "@/components/page-bg";
 
 type Props = {
   params: { slug: string };
@@ -13,6 +14,8 @@ export default function ProjectPage({ params }: Props) {
   if (!project) return notFound();
 
   return (
+    <>
+    <PageBg src="/bg/cv.jpg" dim={0.6} />
     <article className="relative">
       {/* Hero Section */}
       <div className="relative h-[60vh] w-full overflow-hidden">
@@ -68,5 +71,6 @@ export default function ProjectPage({ params }: Props) {
         </div>
       </section>
     </article>
+    </>
   );
 }

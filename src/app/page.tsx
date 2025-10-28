@@ -2,10 +2,12 @@ import HeroSplit from "@/components/hero-split";
 import FeaturedCard from "@/components/featured-card";
 import { featured } from "@/lib/featured-projects";
 import ContactForm from "@/components/contact-form";
+import PageBg from "@/components/page-bg";
 
 export default function HomePage() {
   return (
     <>
+      <PageBg src="/bg/home.jpg" dim={0.55} />
       <HeroSplit />
 
       <section id="projects" className="mx-auto max-w-6xl px-4 py-16">
