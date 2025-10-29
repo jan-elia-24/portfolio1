@@ -194,7 +194,6 @@ html {
   100% { transform: translateY(100vh); }
 }
 
-/* Respektera reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .scanlines {
     animation: none;
