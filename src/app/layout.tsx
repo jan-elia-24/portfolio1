@@ -60,6 +60,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            body { 
+              background-color: #0a0a0a !important;
+              color: #f5f5f5;
+            }
+          `
+        }} />
+      </head>
       <body className="bg-neutral-950 text-neutral-100 antialiased">
         <NextTopLoader showSpinner={false} height={2} />
         <CursorGlow />
