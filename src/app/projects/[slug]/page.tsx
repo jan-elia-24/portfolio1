@@ -7,15 +7,17 @@ import CaseToc from "@/components/case-toc";
 import { formatLocalDate } from "@/lib/date";
 import Image from "next/image";
 
-type Props = { params: { slug: string } };
+type Props = { params: Promise<{ slug: string }> };
 
 export async function generateMetadata({ params }: Props) {
-  const title = `${params.slug} – Case Study`;
-  return { title, description: `Case study for ${params.slug}` };
+  const { slug } = await params;
+  const title = `${slug} – Case Study`;
+  return { title, description: `Case study for ${slug}` };
 }
 
 export default async function ProjectDetail({ params }: Props) {
-  const repo = await fetchRepo("jan-elia-24", params.slug);
+  const { slug } = await params;
+  const repo = await fetchRepo("jan-elia-24", slug);
   if (!repo) return notFound();
 
   return (
