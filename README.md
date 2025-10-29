@@ -1,36 +1,118 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Jan Elia — Portfolio
 
-## Getting Started
+A modern, responsive portfolio built with **Next.js (App Router)**, featuring live GitHub integration, elegant motion, and a polished developer experience.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Dynamic Projects** — Fetches your public GitHub repositories and renders project cards
+- **Case Studies** — `/projects/[slug]` pages with sticky TOC and GitHub Open Graph covers
+- **Responsive & Accessible** — Tailwind CSS v4 styles, skip‑to‑content link, semantic headings
+- **Delightful Motion** — Framer Motion page transitions, reveal‑on‑scroll, 3D card tilt, cursor glow/trail
+- **Performance‑minded** — Optimized images via `next/image`, remote patterns, caching (`revalidate`)
+- **PWA‑ready** — App icons + `manifest.ts` for install experience
+- **404 UX** — Cinematic not‑found with glitch + scanline effects
+
+## 🛠 Tech Stack
+
+- **Framework:** Next.js (App Router)
+- **Styling:** Tailwind CSS v4
+- **Animations:** Framer Motion
+- **Email:** Resend (API route)
+- **Data:** GitHub REST API
+- **Deploy:** Vercel
+
+## 📁 Project Structure
+
+```
+src/
+  app/
+    (home files ...)
+    projects/
+      page.tsx
+      [slug]/
+        page.tsx
+        loading.tsx
+    cv/
+      page.tsx
+    api/
+      contact/
+        route.ts          # Resend email handler
+    not-found.tsx
+    manifest.ts
+  components/
+    featured-card.tsx
+    project-skeleton.tsx
+    cursor-trail.tsx
+    cursor-glow.tsx
+    page-bg.tsx
+    timeline.tsx
+    case-toc.tsx
+    back-to-projects.tsx
+    nav.tsx
+    footer.tsx
+  lib/
+    github.ts            # fetchRepos(), fetchRepo()
+    date.ts
+public/
+  bg/...
+  me.jpg
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔧 Configuration
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Create `.env.local` in the project root:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+# Optional but recommended (higher GitHub rate limits)
+GITHUB_TOKEN=ghp_your_token_here
 
-## Learn More
+# For contact form emails (server-side only)
+RESEND_API_KEY=re_********************************
+```
 
-To learn more about Next.js, take a look at the following resources:
+> Keep `.env.local` out of version control (Next.js `.gitignore` already does this).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🧑‍💻 Getting Started
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+# 1) Install deps
+npm install
 
-## Deploy on Vercel
+# 2) Run dev server
+npm run dev
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# 3) Open
+http://localhost:3000
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Notes
+- Tailwind v4 uses the new `@import "tailwindcss";` in `globals.css` (no `tailwind.config.*` required for basics).
+- Remote images (GitHub Open Graph) are whitelisted in `next.config.mjs` via `images.remotePatterns`.
+- Contact form posts to `/api/contact` and sends mail via Resend.
+
+## 🎨 Customization
+
+- **Profile & copy:** `src/app/cv/page.tsx`, `src/components/about-card.tsx`
+- **Project source:** `src/lib/github.ts` (tweak sorting/filtering, topics → tags mapping)
+- **Covers:** Uses GitHub OG by default; override with `cover` on cards
+- **Brand color:** Emerald accent in CSS utilities (Tailwind classes) and small custom rules in `globals.css`
+
+## 📦 Deployment (Vercel)
+1. Push to GitHub
+2. Create a new Vercel project → import repo
+3. Add **Environment Variables** in Vercel:
+   - `RESEND_API_KEY`
+   - `GITHUB_TOKEN` (optional)
+4. Deploy. Vercel will detect Next.js/App Router automatically.
+
+## 🤝 Contributing / Reuse
+
+This is a personal portfolio, but you’re welcome to take inspiration or fork it. If you find issues, open one or submit a PR.
+
+## 📄 License
+
+MIT — feel free to use this as a template for your own portfolio.
+
+---
+
+Built with ❤️ using **Next.js** and **Tailwind CSS**.
