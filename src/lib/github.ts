@@ -92,7 +92,7 @@ export async function fetchFeaturedRepos(owner: string): Promise<Featured[]> {
         tags: r.topics?.length ? r.topics : r.language ? [r.language] : [],
         repo: r.html_url,
         demo: r.homepage || undefined,
-        cover: `https://opengraph.githubassets.com/1/${owner}/${r.name}`,
+        cover: `https://opengraph.githubassets.com/1/${owner}/${r.name}?v=${new Date().toISOString().split('T')[0]}`,
       } as Featured;
     })
   );
