@@ -41,7 +41,7 @@ export async function fetchRepos(
       tags: r.topics?.length ? r.topics : r.language ? [r.language] : [],
       repo: r.html_url,
       demo: r.homepage || undefined,
-      cover: `https://opengraph.githubassets.com/1/jan-elia-24/${r.name}`,
+      cover: `https://opengraph.githubassets.com/1/jan-elia-24/${r.name}?v=${new Date().toISOString().split('T')[0]}`,
     }));
 }
 
