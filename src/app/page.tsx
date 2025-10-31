@@ -1,13 +1,13 @@
 import HeroSplit from "@/components/hero-split";
 import FeaturedCard from "@/components/featured-card";
-import { fetchFeaturedRepos } from "@/lib/github";  // ← Använd GitHub API
+import { fetchFeaturedRepos } from "@/lib/github"; 
 import ContactForm from "@/components/contact-form";
 import PageBg from "@/components/page-bg";
 import Reveal from "@/components/reveal";
 import AboutCard from "@/components/about-card";
 
 export default async function HomePage() {  
-  const featured = await fetchFeaturedRepos("jan-elia-24");  // ← Hämta från GitHub
+  const featured = await fetchFeaturedRepos("jan-elia-24");  
 
   return (
     <>
@@ -15,7 +15,6 @@ export default async function HomePage() {
       
       <main id="main"> 
         <HeroSplit />
-        <AboutCard />
 
         <section className="mx-auto max-w-6xl px-4 py-16">
           <Reveal>
@@ -23,7 +22,7 @@ export default async function HomePage() {
           </Reveal>
           <Reveal>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {featured.map((p) => (  // ← Använd featured från GitHub
+              {featured.map((p) => ( 
                 <FeaturedCard key={p.slug} p={p} />
               ))}
             </div>
