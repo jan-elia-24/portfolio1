@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { useState } from "react";
-import type { Featured } from "@/lib/featured-projects";
+import type { Featured } from "@/lib/github";
 
 export default function FeaturedCard({ p }: { p: Featured }) {
   const [hover, setHover] = useState(false);

@@ -1,5 +1,12 @@
-import type { Featured } from "@/lib/featured-projects";
-
+export type Featured = {
+  slug: string;
+  title: string;
+  blurb: string;
+  tags: string[];
+  repo: string;
+  demo?: string;
+  cover?: string;
+};
 export type GhRepo = {
   name: string;
   description: string | null;
@@ -66,7 +73,7 @@ const FEATURED = [
   "books-solution", 
   "wordle",
   "fullstack-kino",
-  "esc-her",
+  "-ESC-Hacker-Escape-Rooms-Jan-Elia",
   "jans-todo-list",
 ];
 
