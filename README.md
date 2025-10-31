@@ -84,7 +84,6 @@ npm run dev
 # 3) Open
 http://localhost:3000
 ```
-
 ### Notes
 - Tailwind v4 uses the new `@import "tailwindcss";` in `globals.css` (no `tailwind.config.*` required for basics).
 - Remote images (GitHub Open Graph) are whitelisted in `next.config.mjs` via `images.remotePatterns`.
