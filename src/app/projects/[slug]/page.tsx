@@ -6,6 +6,7 @@ import BackToProjects from "@/components/back-to-projects";
 import CaseToc from "@/components/case-toc";
 import { formatLocalDate } from "@/lib/date";
 import Image from "next/image";
+import { projectContent, getDefaultContent } from "@/lib/project-content";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -19,6 +20,8 @@ export default async function ProjectDetail({ params }: Props) {
   const { slug } = await params;
   const repo = await fetchRepo("jan-elia-24", slug);
   if (!repo) return notFound();
+
+  const content = projectContent[slug] || getDefaultContent(repo); 
 
   return (
     <article className="relative">
@@ -64,7 +67,6 @@ export default async function ProjectDetail({ params }: Props) {
           )}
         </div>
 
-        {/* Last updated and Edit on GitHub */}
         <div className="mt-6 flex flex-wrap items-center gap-3 text-sm text-neutral-400">
           <span>
             Last updated:{" "}
@@ -87,7 +89,6 @@ export default async function ProjectDetail({ params }: Props) {
         <CaseToc />
 
         <div className="grid gap-10">
-          {/* Back button and Hero cover */}
           <BackToProjects />
 
           <div className="overflow-hidden rounded-2xl border border-white/10">
@@ -104,34 +105,31 @@ export default async function ProjectDetail({ params }: Props) {
           <section id="overview">
             <h2 className="text-xl font-semibold">Overview</h2>
             <p className="mt-2 text-neutral-300">
-              Brief summary of the project goal, target users, and outcome.
+              {content.overview}
             </p>
           </section>
 
           <section id="role-stack">
             <h2 className="text-xl font-semibold">Role & Stack</h2>
             <ul className="mt-2 text-neutral-300 list-disc pl-5">
-              <li>Role: Developer / Designer</li>
-              <li>
-                Stack: Next.js, React, Tailwind, Node, C#, Java (adapt per
-                project)
-              </li>
+              <li>Role: {content.role}</li>
+              <li>Stack: {content.stack.join(", ")}</li>
             </ul>
           </section>
 
           <section id="features">
             <h2 className="text-xl font-semibold">Key Features</h2>
             <ul className="mt-2 text-neutral-300 list-disc pl-5">
-              <li>Feature 1 — short description</li>
-              <li>Feature 2 — short description</li>
-              <li>Feature 3 — short description</li>
+              {content.features.map((feature: string, index: number) => (
+                <li key={index}>{feature}</li>
+              ))}
             </ul>
           </section>
 
           <section id="learnings">
             <h2 className="text-xl font-semibold">Challenges & Learnings</h2>
             <p className="mt-2 text-neutral-300">
-              What was tricky? How did you solve it? What did you learn?
+              {content.learnings}
             </p>
           </section>
         </div>

@@ -72,8 +72,7 @@ const FEATURED = [
   "portfolio1",
   "books-solution", 
   "wordle",
-  "fullstack-kino",
-  "-ESC-Hacker-Escape-Rooms-Jan-Elia",
+  "escape-rooms",
   "jans-todo-list",
 ];
 
