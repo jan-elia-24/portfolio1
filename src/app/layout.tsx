@@ -8,6 +8,7 @@ import CursorGlow from "@/components/cursor-glow";
 import { Toaster } from "sonner";
 import CursorTrail from "@/components/cursor-trail";
 import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://portfolio1-lemon-tau.vercel.app"), 
@@ -98,6 +99,7 @@ export default function RootLayout({
         </div>
         <Footer />
         <Analytics />
+        <SpeedInsights />
 
       </body>
     </html>
