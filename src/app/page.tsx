@@ -5,6 +5,7 @@ import ContactForm from "@/components/contact-form";
 import PageBg from "@/components/page-bg";
 import Reveal from "@/components/reveal";
 import AboutCard from "@/components/about-card";
+import { Analytics } from "@vercel/analytics/next"
 
 export default async function HomePage() {  
   const featured = await fetchFeaturedRepos("jan-elia-24");  
