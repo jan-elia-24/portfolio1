@@ -10,7 +10,7 @@ import CursorTrail from "@/components/cursor-trail";
 import { Analytics } from "@vercel/analytics/next"
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://jan-elia.dev"), 
+  metadataBase: new URL("https://portfolio1-lemon-tau.vercel.app"), 
   title: {
     default: "Jan Elia – Portfolio",
     template: "%s | Jan Elia",
@@ -22,7 +22,10 @@ export const metadata: Metadata = {
     "Full-stack developer",
     "Next.js",
     "React",
+    "SpringBoot",
+    "CI/CD",
     "Angular",
+    "SQL",
     "Node",
     "C#",
     "Java",
@@ -33,7 +36,7 @@ export const metadata: Metadata = {
     title: "Jan Elia – Portfolio",
     description:
       "Modern web apps where design meets performance and code feels alive.",
-    url: "https://jan-elia.dev",
+    url: "https://portfolio1-lemon-tau.vercel.app",
     siteName: "Jan Elia – Portfolio",
     type: "website",
   },
