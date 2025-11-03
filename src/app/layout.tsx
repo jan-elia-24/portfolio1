@@ -7,9 +7,10 @@ import NextTopLoader from "nextjs-toploader";
 import CursorGlow from "@/components/cursor-glow";
 import { Toaster } from "sonner";
 import CursorTrail from "@/components/cursor-trail";
+import { Analytics } from "@vercel/analytics/next"
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://jan-elia.dev"), // change to my domain later (or Vercel URL)
+  metadataBase: new URL("https://jan-elia.dev"), 
   title: {
     default: "Jan Elia – Portfolio",
     template: "%s | Jan Elia",
@@ -93,6 +94,8 @@ export default function RootLayout({
           <PageTransition>{children}</PageTransition>
         </div>
         <Footer />
+        <Analytics />
+
       </body>
     </html>
   );
