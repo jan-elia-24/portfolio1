@@ -1,10 +1,11 @@
 "use client";
 import { useState, useRef } from "react";
-import { toast } from "sonner";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 
 export default function ContactForm() {
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error" | "ratelimit">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+  const [nameWarning, setNameWarning] = useState(false);
   const shimmerRef = useRef<HTMLSpanElement>(null);
   const inView = useInView(shimmerRef, { once: true, margin: "-80px" });
 
@@ -20,21 +21,13 @@ export default function ContactForm() {
     if (res.ok) {
       setStatus("sent");
     } else {
-      setStatus("error");
-      toast.error(
-        <div className="flex flex-col gap-1">
-          <p className="text-base font-semibold text-red-400">Oops 😬</p>
-          <p className="text-sm text-neutral-300">Something went wrong — try again!</p>
-        </div>,
-        {
-          style: {
-            background: "rgba(20,0,0,0.9)",
-            border: "1px solid rgba(239,68,68,0.4)",
-            boxShadow: "0 0 20px rgba(239,68,68,0.2)",
-          },
-          duration: 4000,
-        }
-      );
+      const body = await res.json().catch(() => ({}));
+      if (res.status === 429) {
+        setStatus("ratelimit");
+      } else {
+        setStatus("error");
+        setErrorMsg(body.error ?? "An unexpected error occurred.");
+      }
     }
   };
 
@@ -73,12 +66,22 @@ export default function ContactForm() {
           transition={{ duration: 0.35, ease: "easeOut" }}
           className="grid gap-3 max-w-lg"
         >
-          <input
-            required
-            name="name"
-            placeholder="Name"
-            className="rounded-xl px-3 py-2 border border-white/10 bg-black/30 backdrop-blur"
-          />
+          <div className="flex flex-col gap-1">
+            <input
+              required
+              name="name"
+              placeholder="Full name"
+              className={`rounded-xl px-3 py-2 border bg-black/30 backdrop-blur transition-colors ${nameWarning ? "border-yellow-400/50" : "border-white/10"}`}
+              onBlur={(e) => {
+                const parts = e.target.value.trim().split(/\s+/);
+                setNameWarning(parts.length < 2 || parts.some((p) => p.length < 2));
+              }}
+              onChange={() => setNameWarning(false)}
+            />
+            {nameWarning && (
+              <p className="text-xs text-yellow-400 px-1">Please enter both your first and last name.</p>
+            )}
+          </div>
           <input
             required
             type="email"
@@ -118,7 +121,10 @@ export default function ContactForm() {
             </button>
           </div>
           {status === "error" && (
-            <p className="text-sm text-red-400">Something went wrong — please try again.</p>
+            <p className="text-sm text-red-400">Something went wrong: {errorMsg}</p>
+          )}
+          {status === "ratelimit" && (
+            <p className="text-sm text-yellow-400">Too many attempts. Please wait a moment and try again.</p>
           )}
         </motion.form>
       )}

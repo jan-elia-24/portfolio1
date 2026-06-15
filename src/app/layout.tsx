@@ -80,6 +80,7 @@ export default function RootLayout({
         <CursorTrail />
         <Toaster
           position="bottom-center"
+          style={{ zIndex: 9999 }}
           toastOptions={{
             style: {
               backdropFilter: "blur(10px)",
