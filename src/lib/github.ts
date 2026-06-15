@@ -48,7 +48,7 @@ export async function fetchRepos(
       tags: r.topics?.length ? r.topics : r.language ? [r.language] : [],
       repo: r.html_url,
       demo: r.homepage || undefined,
-      cover: `https://opengraph.githubassets.com/1/jan-elia-24/${r.name}`,
+      cover: PROJECT_COVERS[r.name.toLowerCase()] ?? `https://opengraph.githubassets.com/1/jan-elia-24/${r.name}`,
     }));
 }
 
@@ -74,6 +74,12 @@ const FEATURED = [
   "portfolio1",
 ];
 
+const PROJECT_COVERS: Record<string, string> = {
+  sveabyggpartnerab: "/projects/sveabyggpartnerab.png",
+  washify:           "/projects/washify.png",
+  portfolio1:        "/projects/portfolio1.png",
+};
+
 const headers: Record<string, string> = {
   Accept: "application/vnd.github+json",
   "X-GitHub-Api-Version": "2022-11-28",
@@ -96,7 +102,7 @@ export async function fetchFeaturedRepos(owner: string): Promise<Featured[]> {
         tags: r.topics?.length ? r.topics : r.language ? [r.language] : [],
         repo: r.html_url,
         demo: r.homepage || undefined,
-        cover: `https://opengraph.githubassets.com/1/jan-elia-24/${r.name}`,
+        cover: PROJECT_COVERS[r.name.toLowerCase()] ?? `https://opengraph.githubassets.com/1/jan-elia-24/${r.name}`,
       } as Featured;
     })
   );
