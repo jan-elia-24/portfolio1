@@ -1,5 +1,5 @@
 export const projectContent: Record<string, any> = {
-  "portfolio1": {
+  "portfolio": {
     overview: "A modern developer portfolio built with Next.js 14, featuring dynamic GitHub integration, smooth animations, and case study pages.",
     role: "Full-Stack Developer & Designer",
     stack: ["Next.js 14", "React", "TypeScript", "Tailwind CSS", "Framer Motion"],

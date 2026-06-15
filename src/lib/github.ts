@@ -71,13 +71,13 @@ export async function fetchRepo(owner: string, name: string) {
 const FEATURED = [
   "SveabyggpartnerAB",
   "washify",
-  "portfolio1",
+  "portfolio",
 ];
 
 const PROJECT_COVERS: Record<string, string> = {
   sveabyggpartnerab: "/projects/sveabyggpartnerab.png",
   washify:           "/projects/washify.png",
-  portfolio1:        "/projects/portfolio1.png",
+  portfolio:         "/projects/portfolio1.png",
 };
 
 const headers: Record<string, string> = {

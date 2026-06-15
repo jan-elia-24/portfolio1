@@ -53,8 +53,8 @@ export default function Nav() {
       </a>
 
       <div className="mx-auto max-w-6xl px-4 h-14 flex items-center justify-between">
-        <Link href="/" className="font-logo text-2xl" onClick={() => setOpen(false)}>
-          JanElia
+        <Link href="/" className="logo-link font-logo text-3xl" onClick={() => setOpen(false)}>
+          <span className="text-white">Jan</span><span className="logo-elia">Elia</span>
         </Link>
 
         {/* Desktop links */}

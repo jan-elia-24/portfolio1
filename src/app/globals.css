@@ -177,6 +177,20 @@ html {
 .nav-link.is-active { color:#a7f3d0; }           
 .nav-link.is-active::after { width:100%; }
 
+/* Logo "Elia" gradient + shimmer on hover */
+.logo-elia {
+  background: linear-gradient(90deg, #10b981 0%, #a7f3d0 45%, #10b981 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-position: 0% center;
+  transition: background-position 0.6s ease;
+}
+.logo-link:hover .logo-elia {
+  background-position: 200% center;
+}
+
 @keyframes shimmer-sweep {
   0%    { background-position: 150% center; transform: scale(1); letter-spacing: 0em; }
   14%   { transform: scale(1.1); letter-spacing: 0.04em; }
