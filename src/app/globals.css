@@ -196,6 +196,12 @@ html {
   100% { background-position: -150% center; }
 }
 
+/* Light burst from hero image */
+@keyframes light-burst {
+  0%   { transform: scale(0.4); opacity: 1; }
+  100% { transform: scale(4);   opacity: 0; }
+}
+
 /* View Full CV button shimmer sweep */
 .btn-cv-shimmer {
   position: relative;
