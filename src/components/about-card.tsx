@@ -54,13 +54,13 @@ export default function AboutCard() {
         <div className="flex flex-wrap gap-4 pt-4">
           <Link
             href="/projects"
-            className="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-medium transition"
+            className="px-5 py-2.5 rounded-xl bg-emerald-500 text-black font-medium transition-all duration-200 hover:bg-emerald-400 hover:scale-105 hover:shadow-[0_0_24px_rgba(16,185,129,0.35)] active:scale-95"
           >
             View My Work
           </Link>
           <Link
             href="/cv"
-            className="px-5 py-2.5 rounded-xl border border-white/15 hover:bg-white/5 transition"
+            className="px-5 py-2.5 rounded-xl border border-white/15 transition-all duration-200 hover:border-white/40 hover:bg-white/5 active:scale-95"
           >
             See Full CV
           </Link>
