@@ -188,7 +188,7 @@ export default function CVPage() {
         {/* Header */}
         <header className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 border-b border-white/10 pb-6 mb-8">
           <div>
-            <h1 className="font-display text-5xl font-bold leading-tight tracking-wide">Jan Elia</h1>
+            <h1 className="cv-name font-display text-5xl font-bold leading-tight tracking-wide">Jan Elia</h1>
             <p className="text-neutral-300 mt-1">
               Full-Stack Developer — Java · JavaScript · .NET · SQL · WordPress
             </p>
@@ -274,7 +274,7 @@ export default function CVPage() {
               <h3 className="font-semibold mb-3">Skills</h3>
               <div className="flex flex-wrap gap-2">
                 {skills.map((s) => (
-                  <span key={s} className="text-xs px-2 py-1 rounded-full border border-white/15 bg-neutral-900/60">
+                  <span key={s} className="text-xs px-2 py-1 rounded-full border border-white/15 bg-neutral-900/60 transition-all duration-200 hover:border-emerald-400/50 hover:bg-emerald-400/10 hover:text-emerald-300 cursor-default">
                     {s}
                   </span>
                 ))}

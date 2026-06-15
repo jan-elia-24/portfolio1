@@ -177,6 +177,25 @@ html {
 .nav-link.is-active { color:#a7f3d0; }           
 .nav-link.is-active::after { width:100%; }
 
+
+/* CV page h1 — emerald shimmer only on hover */
+.cv-name {
+  display: inline-block;
+  color: white;
+}
+.cv-name:hover {
+  background: linear-gradient(90deg, #f5f5f5 0%, #10b981 35%, #a7f3d0 50%, #10b981 65%, #f5f5f5 100%);
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: cv-name-shimmer 6s ease infinite;
+}
+@keyframes cv-name-shimmer {
+  0%   { background-position: 150% center; }
+  100% { background-position: -150% center; }
+}
+
 /* View Full CV button shimmer sweep */
 .btn-cv-shimmer {
   position: relative;
