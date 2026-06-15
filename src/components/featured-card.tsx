@@ -5,6 +5,36 @@ import { motion, useMotionValue, useTransform } from "framer-motion";
 import { useState } from "react";
 import type { Featured } from "@/lib/github";
 
+const TAG_COLORS: Record<string, string> = {
+  typescript:   "bg-blue-500/15 text-blue-300 border-blue-500/30",
+  javascript:   "bg-yellow-400/15 text-yellow-300 border-yellow-400/30",
+  java:         "bg-orange-500/15 text-orange-300 border-orange-500/30",
+  python:       "bg-green-500/15 text-green-300 border-green-500/30",
+  "c#":         "bg-violet-500/15 text-violet-300 border-violet-500/30",
+  css:          "bg-sky-500/15 text-sky-300 border-sky-500/30",
+  html:         "bg-red-500/15 text-red-300 border-red-500/30",
+  react:        "bg-cyan-500/15 text-cyan-300 border-cyan-500/30",
+  nextjs:       "bg-neutral-400/15 text-neutral-200 border-neutral-400/30",
+  "next.js":    "bg-neutral-400/15 text-neutral-200 border-neutral-400/30",
+  tailwind:     "bg-teal-500/15 text-teal-300 border-teal-500/30",
+  tailwindcss:  "bg-teal-500/15 text-teal-300 border-teal-500/30",
+  docker:       "bg-blue-400/15 text-blue-300 border-blue-400/30",
+  mysql:        "bg-orange-400/15 text-orange-300 border-orange-400/30",
+  postgresql:   "bg-indigo-500/15 text-indigo-300 border-indigo-500/30",
+  springboot:   "bg-emerald-500/15 text-emerald-300 border-emerald-500/30",
+  "spring-boot":"bg-emerald-500/15 text-emerald-300 border-emerald-500/30",
+  angular:      "bg-red-600/15 text-red-300 border-red-600/30",
+  nodejs:       "bg-green-600/15 text-green-300 border-green-600/30",
+  php:          "bg-purple-500/15 text-purple-300 border-purple-500/30",
+};
+
+function tagClass(tag: string) {
+  return (
+    TAG_COLORS[tag.toLowerCase()] ??
+    "bg-white/5 text-neutral-300 border-white/15"
+  );
+}
+
 export default function FeaturedCard({ p }: { p: Featured }) {
   const [hover, setHover] = useState(false);
   const mx = useMotionValue(0);
@@ -59,11 +89,11 @@ export default function FeaturedCard({ p }: { p: Featured }) {
         <h3 className="text-lg font-semibold">{p.title}</h3>
         <p className="text-sm text-neutral-300 mt-1 line-clamp-2">{p.blurb}</p>
 
-        <div className="mt-3 flex flex-wrap gap-2">
-          {p.tags?.slice(0, 4).map((t) => (
+        <div className="mt-3 flex flex-wrap gap-1.5">
+          {p.tags?.slice(0, 3).map((t) => (
             <span
               key={t}
-              className="text-xs px-2 py-1 rounded-full border border-white/15 bg-black/30 backdrop-blur-sm"
+              className={`text-xs px-2.5 py-0.5 rounded-full border font-medium tracking-wide ${tagClass(t)}`}
             >
               {t}
             </span>
