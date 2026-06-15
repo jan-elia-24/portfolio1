@@ -177,6 +177,27 @@ html {
 .nav-link.is-active { color:#a7f3d0; }           
 .nav-link.is-active::after { width:100%; }
 
+/* View Full CV button shimmer sweep */
+.btn-cv-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.btn-cv-shimmer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(16,185,129,0.35) 50%, transparent 100%);
+  animation: btn-shimmer 3s ease infinite;
+}
+@keyframes btn-shimmer {
+  0%   { left: -80%; }
+  35%  { left: 120%; }
+  100% { left: 120%; }
+}
+
 /* Logo "Elia" gradient + shimmer on hover */
 .logo-elia {
   background: linear-gradient(90deg, #10b981 0%, #a7f3d0 45%, #10b981 100%);

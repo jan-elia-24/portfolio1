@@ -195,7 +195,7 @@ export default function CVPage() {
           </div>
           <button
             onClick={() => setPdfOpen(true)}
-            className="self-start md:self-auto rounded-xl border border-white/10 bg-black/30 px-4 py-2 text-sm text-neutral-100 backdrop-blur hover:border-emerald-400 hover:text-emerald-400 hover:scale-105 hover:shadow-[0_0_20px_rgba(16,185,129,0.2)] active:scale-95 transition-all duration-200 print:hidden"
+            className="btn-cv-shimmer self-start md:self-auto rounded-xl border border-white/10 bg-black/30 px-4 py-2 text-sm text-neutral-100 backdrop-blur hover:border-emerald-400 hover:text-emerald-400 hover:scale-105 hover:shadow-[0_0_20px_rgba(16,185,129,0.2)] active:scale-95 transition-all duration-200 print:hidden"
           >
             View Full CV →
           </button>
@@ -326,7 +326,9 @@ export default function CVPage() {
             >
               {/* Doc toolbar */}
               <div className="flex items-center justify-between px-5 py-3 shrink-0 border-b border-white/10" style={{ background: "rgba(10,10,10,0.7)", backdropFilter: "blur(12px)" }}>
-                <span className="font-logo text-lg text-white/80">JanElia</span>
+                <span className="logo-link font-logo text-lg">
+                  <span className="text-white">Jan</span><span className="logo-elia">Elia</span>
+                </span>
                 <div className="flex items-center gap-2">
                   <a
                     href="/cv/CV Jan Elia.pdf"
