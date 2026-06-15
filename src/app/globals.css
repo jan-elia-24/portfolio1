@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Vladimir+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Vladimir+Script&family=Playfair+Display:wght@700&display=swap');
 @import "tailwindcss";
 
 
@@ -35,6 +35,10 @@ html {
 
 .font-logo {
   font-family: 'Vladimir Script', cursive;
+}
+
+.font-display {
+  font-family: 'Playfair Display', Georgia, serif;
 }
 
 /* Footer pulse dot */

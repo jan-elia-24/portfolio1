@@ -1,4 +1,6 @@
 "use client";
+import { useState } from "react";
+
 type Item = {
   period: string;
   title: string;
@@ -6,11 +8,41 @@ type Item = {
   location?: string;
   bullets?: string[];
 };
-export default function Timeline({ items }: { items: Item[] }) {
+
+export default function Timeline({
+  items,
+  onHoverChange,
+  dimmed = false,
+}: {
+  items: Item[];
+  onHoverChange?: (hovered: boolean) => void;
+  dimmed?: boolean;
+}) {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+  const handleEnter = (i: number) => {
+    setHoveredIndex(i);
+    onHoverChange?.(true);
+  };
+
+  const handleLeave = () => {
+    setHoveredIndex(null);
+    onHoverChange?.(false);
+  };
+
   return (
     <ol className="relative border-s border-white/10 pl-6 space-y-8">
       {items.map((it, i) => (
-        <li key={i} className="group">
+        <li
+          key={i}
+          className="group transition-all duration-300"
+          style={{
+            filter: dimmed || (hoveredIndex !== null && hoveredIndex !== i) ? "blur(2px)" : "none",
+            opacity: dimmed || (hoveredIndex !== null && hoveredIndex !== i) ? 0.4 : 1,
+          }}
+          onMouseEnter={() => !dimmed && handleEnter(i)}
+          onMouseLeave={() => !dimmed && handleLeave()}
+        >
           <span className="absolute -left-[9px] top-1.5 size-2.5 rounded-full bg-emerald-400 shadow-[0_0_14px_rgba(16,185,129,.6)]" />
           <div>
             <h3 className="text-lg font-semibold">{it.title}</h3>

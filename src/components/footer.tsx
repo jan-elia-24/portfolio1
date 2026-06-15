@@ -45,7 +45,7 @@ export default function Footer() {
       </div>
 
       <p className="footer-pulse inline-flex items-center gap-2">
-        © Jan Elia 2025
+        © Jan Elia 2026
       </p>
     </footer>
   );

@@ -75,7 +75,7 @@ export default function RootLayout({
           `
         }} />
       </head>
-      <body className="bg-neutral-950 text-neutral-100 antialiased">
+      <body className="bg-neutral-950 text-neutral-100 antialiased" suppressHydrationWarning>
         <NextTopLoader showSpinner={false} height={2} />
         <CursorGlow />
         <CursorTrail />
