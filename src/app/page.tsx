@@ -1,10 +1,11 @@
 import HeroSplit from "@/components/hero-split";
 import FeaturedCard from "@/components/featured-card";
-import { fetchFeaturedRepos } from "@/lib/github"; 
+import { fetchFeaturedRepos } from "@/lib/github";
 import ContactForm from "@/components/contact-form";
 import PageBg from "@/components/page-bg";
 import Reveal from "@/components/reveal";
 import AboutCard from "@/components/about-card";
+import Link from "next/link";
 
 export default async function HomePage() {  
   const featured = await fetchFeaturedRepos("jan-elia-24");  
@@ -22,9 +23,19 @@ export default async function HomePage() {
           </Reveal>
           <Reveal>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {featured.map((p) => ( 
+              {featured.map((p) => (
                 <FeaturedCard key={p.slug} p={p} />
               ))}
+            </div>
+          </Reveal>
+          <Reveal>
+            <div className="flex justify-center mt-10">
+              <Link
+                href="/projects"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-white/15 text-sm font-medium text-neutral-300 transition-all duration-200 hover:border-white/40 hover:bg-white/5 hover:text-white active:scale-95"
+              >
+                View all projects →
+              </Link>
             </div>
           </Reveal>
         </section>

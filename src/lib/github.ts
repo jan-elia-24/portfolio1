@@ -69,11 +69,9 @@ export async function fetchRepo(owner: string, name: string) {
 }
 
 const FEATURED = [
+  "SveabyggpartnerAB",
+  "washify",
   "portfolio1",
-  "books-solution", 
-  "wordle",
-  "escape-rooms",
-  "jans-todo-list",
 ];
 
 const headers: Record<string, string> = {
