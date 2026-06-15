@@ -40,7 +40,7 @@ export default function Nav() {
   };
 
   return (
-    <nav className="fixed top-0 inset-x-0 z-50 backdrop-blur border-b border-white/10">
+    <nav className="fixed top-0 inset-x-0 z-50 bg-neutral-950/70 backdrop-blur-md border-b border-white/10">
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 bg-black/90 backdrop-blur text-white px-4 py-2 rounded-lg border border-white/10 text-sm font-medium transition-opacity duration-300 focus:opacity-100 opacity-0"

@@ -213,7 +213,7 @@ export default function CVPage() {
 
         {/* Grid: Timeline + Sidebar */}
         <div className="grid lg:grid-cols-[minmax(0,1.4fr)_minmax(0,.8fr)] gap-10">
-          <div className="space-y-10 relative z-50">
+          <div className="space-y-10 relative z-[45]">
             <section
               className="transition-all duration-300"
               style={{
