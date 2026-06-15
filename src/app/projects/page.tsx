@@ -8,7 +8,7 @@ export const revalidate = 600;
 function SkeletonGrid() {
   return (
     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      {Array.from({ length: 6 }).map((_, i) => (
+      {Array.from({ length: 9 }).map((_, i) => (
         <ProjectSkeleton key={i} />
       ))}
     </div>
