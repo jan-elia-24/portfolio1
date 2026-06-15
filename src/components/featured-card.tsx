@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { useState } from "react";
 import type { Featured } from "@/lib/github";
+import ExternalIcon from "@/components/external-icon";
 
 const TAG_COLORS: Record<string, string> = {
   typescript:   "bg-blue-500/15 text-blue-300 border-blue-500/30",
@@ -107,7 +108,7 @@ export default function FeaturedCard({ p }: { p: Featured }) {
             rel="noopener noreferrer"
             className="text-emerald-400 hover:underline"
           >
-            GitHub ↗
+            GitHub <ExternalIcon />
           </Link>
           {p.demo && (
             <Link
@@ -116,7 +117,7 @@ export default function FeaturedCard({ p }: { p: Featured }) {
               rel="noopener noreferrer"
               className="text-emerald-400 hover:underline"
             >
-              Demo ↗
+              Demo <ExternalIcon />
             </Link>
           )}
         </div>

@@ -7,6 +7,7 @@ import CaseToc from "@/components/case-toc";
 import { formatLocalDate } from "@/lib/date";
 import Image from "next/image";
 import { projectContent, getDefaultContent } from "@/lib/project-content";
+import ExternalIcon from "@/components/external-icon";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -54,7 +55,7 @@ export default async function ProjectDetail({ params }: Props) {
             target="_blank"
             className="text-emerald-400 hover:underline"
           >
-            GitHub ↗
+            GitHub <ExternalIcon />
           </Link>
           {repo.homepage && (
             <Link
@@ -62,7 +63,7 @@ export default async function ProjectDetail({ params }: Props) {
               target="_blank"
               className="text-emerald-400 hover:underline"
             >
-              Live demo ↗
+              Live demo <ExternalIcon />
             </Link>
           )}
         </div>
@@ -80,7 +81,7 @@ export default async function ProjectDetail({ params }: Props) {
             target="_blank"
             className="text-emerald-400 hover:underline"
           >
-            Edit README on GitHub ↗
+            Edit README on GitHub <ExternalIcon />
           </a>
         </div>
       </header>
