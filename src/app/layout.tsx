@@ -7,8 +7,7 @@ import NextTopLoader from "nextjs-toploader";
 import CursorGlow from "@/components/cursor-glow";
 import { Toaster } from "sonner";
 import CursorTrail from "@/components/cursor-trail";
-import { Analytics } from "@vercel/analytics/next"
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import ConsentAnalytics from "@/components/consent-analytics";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://portfolio1-lemon-tau.vercel.app"), 
@@ -98,8 +97,7 @@ export default function RootLayout({
           <PageTransition>{children}</PageTransition>
         </div>
         <Footer />
-        <Analytics />
-        <SpeedInsights />
+        <ConsentAnalytics />
 
       </body>
     </html>
