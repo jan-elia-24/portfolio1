@@ -103,6 +103,16 @@ const education = [
       "LIA (internship): Feb–May 2026 — completed in WordPress development.",
     ],
   },
+  {
+    period: "Aug 2017 — Jan 2019",
+    title: "Bachelor's Programme in Construction Engineering",
+    org: "Uppsala University",
+    location: "Sweden",
+    bullets: [
+      "Studies in structural engineering and construction technology.",
+      "Focus: building physics, building materials, load-bearing structures, and problem solving.",
+    ],
+  },
 ];
 
 const skills = [
