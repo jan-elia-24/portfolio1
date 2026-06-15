@@ -73,9 +73,7 @@ export default function HeroSplit() {
             </motion.span>
           </h1>
           <p className="mt-4 text-neutral-300 max-w-prose">
-            Fueled by curiosity and clean design, I craft modern experiences
-            with Next.js, React, Angular, Node, C#, and Java — turning ideas
-            into smooth, powerful web apps.
+            Java & JavaScript developer with a passion for clean design — building modern full-stack experiences with Next.js, React, Angular, and Node, turning ideas into smooth, powerful web apps.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Link
