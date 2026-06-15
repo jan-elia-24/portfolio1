@@ -74,7 +74,7 @@ const FEATURED = [
   "portfolio",
 ];
 
-const PROJECT_COVERS: Record<string, string> = {
+export const PROJECT_COVERS: Record<string, string> = {
   sveabyggpartnerab: "/projects/sveabyggpartnerab.png",
   washify:           "/projects/washify.png",
   portfolio:         "/projects/portfolio1.png",

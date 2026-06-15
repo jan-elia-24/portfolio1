@@ -1,6 +1,6 @@
 import PageBg from "@/components/page-bg";
 import Link from "next/link";
-import { fetchRepo } from "@/lib/github";
+import { fetchRepo, PROJECT_COVERS } from "@/lib/github";
 import { notFound } from "next/navigation";
 import BackToProjects from "@/components/back-to-projects";
 import CaseToc from "@/components/case-toc";
@@ -93,7 +93,7 @@ export default async function ProjectDetail({ params }: Props) {
 
           <div className="overflow-hidden rounded-2xl border border-white/10">
             <Image
-              src={`https://opengraph.githubassets.com/1/jan-elia-24/${repo.name}`}
+              src={PROJECT_COVERS[repo.name.toLowerCase()] ?? `https://opengraph.githubassets.com/1/jan-elia-24/${repo.name}`}
               alt={`${repo.name} cover`}
               width={1200}
               height={630}
