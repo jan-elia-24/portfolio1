@@ -30,7 +30,7 @@ About Jan Elia:
 - Currently available for work opportunities
 - Born 17 January 1996 (30 years old)
 - Hobbies: playing pool/billiards, going to the gym, watching football
-- Languages: Swedish (native), Arabic (fluent), English (fluent)
+- Languages: Swedish (native), Arabic (native), English (fluent)
 - Personality: curious and eager to learn across all areas of programming, patient, easy to work with, engaged and driven
 
 Skills:
