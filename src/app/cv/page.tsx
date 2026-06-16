@@ -161,7 +161,7 @@ const jobExperience = [
 
 export default function CVPage() {
   const onDownload = useCallback(() => {
-    window.open("/cv/CV Jan Elia.pdf", "_blank");
+    window.open("/cv/CV%20Jan%20Elia.pdf", "_blank");
   }, []);
   const [hoveredExpYear, setHoveredExpYear] = useState<string | null>(null);
   const [pdfOpen, setPdfOpen] = useState(false);
@@ -341,7 +341,7 @@ export default function CVPage() {
                 </span>
                 <div className="flex items-center gap-2">
                   <a
-                    href="/cv/CV Jan Elia.pdf"
+                    href="/cv/CV%20Jan%20Elia.pdf"
                     download
                     className="flex items-center gap-1.5 rounded-lg border border-emerald-400/40 bg-emerald-400/10 hover:bg-emerald-400/20 text-emerald-300 hover:text-emerald-200 px-3 py-1.5 text-xs font-medium transition"
                   >
@@ -358,7 +358,7 @@ export default function CVPage() {
 
               {/* PDF */}
               <iframe
-                src="/cv/CV Jan Elia.pdf#navpanes=0&toolbar=0"
+                src="/cv/CV%20Jan%20Elia.pdf#navpanes=0&toolbar=0"
                 className="flex-1 w-full"
                 title="Jan Elia CV"
               />
