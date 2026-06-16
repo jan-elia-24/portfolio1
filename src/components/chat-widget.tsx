@@ -120,7 +120,7 @@ export default function ChatWidget() {
               <button
                 onClick={send}
                 disabled={!input.trim() || loading}
-                className="px-3 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 disabled:opacity-40 text-black transition-all duration-200 hover:scale-105 active:scale-95"
+                className="px-3 py-2 rounded-xl bg-emerald-500 disabled:opacity-40 text-black transition-all duration-200 hover:bg-emerald-400 hover:scale-105 hover:shadow-[0_0_24px_rgba(16,185,129,0.35)] active:scale-95"
               >
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
               </button>

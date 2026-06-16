@@ -71,6 +71,7 @@ export default function ContactForm() {
               required
               name="name"
               placeholder="Full name"
+              suppressHydrationWarning
               className={`rounded-xl px-3 py-2 border bg-black/30 backdrop-blur transition-colors ${nameWarning ? "border-yellow-400/50" : "border-white/10"}`}
               onBlur={(e) => {
                 const parts = e.target.value.trim().split(/\s+/);
@@ -87,6 +88,7 @@ export default function ContactForm() {
             type="email"
             name="email"
             placeholder="Email"
+            suppressHydrationWarning
             className="rounded-xl px-3 py-2 border border-white/10 bg-black/30 backdrop-blur"
           />
           <textarea
@@ -94,6 +96,7 @@ export default function ContactForm() {
             name="message"
             rows={5}
             placeholder="Message"
+            suppressHydrationWarning
             className="rounded-xl px-3 py-2 border border-white/10 bg-black/30 backdrop-blur"
           />
           <div className="flex items-center justify-between gap-4">
