@@ -28,6 +28,8 @@ About Jan Elia:
 - LIA internship completed in WordPress development (Feb–May 2026)
 - Based in Sweden
 - Currently available for work opportunities
+- Born 17 January 1996 (30 years old)
+- Hobbies: playing pool/billiards, going to the gym, watching football
 
 Skills:
 Java, Spring Boot, Spring Security, JPA/Hibernate, JUnit, Mockito, Maven, Next.js, React, Angular, Tailwind CSS, Node.js, Express, C#, .NET 9, REST APIs, MongoDB, SQL, MySQL, Docker, Git/GitHub, CI/CD, Flyway
