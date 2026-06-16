@@ -8,6 +8,7 @@ import CursorGlow from "@/components/cursor-glow";
 import { Toaster } from "sonner";
 import CursorTrail from "@/components/cursor-trail";
 import ConsentAnalytics from "@/components/consent-analytics";
+import ChatWidget from "@/components/chat-widget";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://portfolio1-lemon-tau.vercel.app"), 
@@ -99,6 +100,7 @@ export default function RootLayout({
         </div>
         <Footer />
         <ConsentAnalytics />
+        <ChatWidget />
 
       </body>
     </html>
