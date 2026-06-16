@@ -1,7 +1,7 @@
 "use client";
 import PageBg from "@/components/page-bg";
 import Timeline from "@/components/timeline";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 const experience = [
@@ -165,12 +165,22 @@ export default function CVPage() {
   }, []);
   const [hoveredExpYear, setHoveredExpYear] = useState<string | null>(null);
   const [pdfOpen, setPdfOpen] = useState(false);
+  const [diplomaOpen, setDiplomaOpen] = useState(false);
   const experienceHovered = hoveredExpYear !== null;
   const [educationHovered, setEducationHovered] = useState(false);
   const [openYears, setOpenYears] = useState<Record<string, boolean>>({});
 
   const toggleYear = (year: string) =>
     setOpenYears((prev) => ({ ...prev, [year]: !prev[year] }));
+
+  useEffect(() => {
+    if (!pdfOpen && !diplomaOpen) return;
+    const original = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = original;
+    };
+  }, [pdfOpen, diplomaOpen]);
 
   const years = [...new Set(experience.map((e) => e.period.slice(0, 4)))].sort(
     (a, b) => Number(b) - Number(a)
@@ -203,12 +213,20 @@ export default function CVPage() {
               Full-Stack Developer — Java · JavaScript · .NET · SQL · WordPress
             </p>
           </div>
-          <button
-            onClick={() => setPdfOpen(true)}
-            className="btn-cv-shimmer self-start md:self-auto rounded-xl border border-white/10 bg-black/30 px-4 py-2 text-sm text-neutral-100 backdrop-blur hover:border-emerald-400 hover:text-emerald-400 hover:scale-105 hover:shadow-[0_0_20px_rgba(16,185,129,0.2)] active:scale-95 transition-all duration-200 print:hidden"
-          >
-            View Full CV →
-          </button>
+          <div className="flex flex-wrap gap-3 self-start md:self-auto print:hidden">
+            <button
+              onClick={() => setPdfOpen(true)}
+              className="btn-cv-shimmer rounded-xl border border-white/10 bg-black/30 px-4 py-2 text-sm text-neutral-100 backdrop-blur hover:border-emerald-400 hover:text-emerald-400 hover:scale-105 hover:shadow-[0_0_20px_rgba(16,185,129,0.2)] active:scale-95 transition-all duration-200"
+            >
+              View Full CV →
+            </button>
+            <button
+              onClick={() => setDiplomaOpen(true)}
+              className="btn-cv-shimmer rounded-xl border border-white/10 bg-black/30 px-4 py-2 text-sm text-neutral-100 backdrop-blur hover:border-emerald-400 hover:text-emerald-400 hover:scale-105 hover:shadow-[0_0_20px_rgba(16,185,129,0.2)] active:scale-95 transition-all duration-200"
+            >
+              View Diploma →
+            </button>
+          </div>
         </header>
 
         {/* Grid: Timeline + Sidebar */}
@@ -368,6 +386,76 @@ export default function CVPage() {
                 </p>
                 <a
                   href="/cv/CV%20Jan%20Elia.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-lg border border-emerald-400/40 bg-emerald-400/10 hover:bg-emerald-400/20 text-emerald-300 px-4 py-2 text-sm font-medium transition"
+                >
+                  Open PDF in new tab
+                </a>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
+      {/* Diploma Document Modal */}
+      <AnimatePresence>
+        {diplomaOpen && (
+          <>
+            <motion.div
+              key="diploma-backdrop"
+              className="fixed inset-0 z-[60] pointer-events-auto"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              style={{ backdropFilter: "blur(8px)", background: "rgba(0,0,0,0.7)" }}
+              onClick={() => setDiplomaOpen(false)}
+            />
+
+            <motion.div
+              key="diploma-doc"
+              className="fixed z-[61] inset-x-4 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 top-[4vh] bottom-[4vh] md:w-[680px] flex flex-col rounded-2xl overflow-hidden shadow-2xl"
+              initial={{ opacity: 0, scale: 0.94, y: 16 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.94, y: 16 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Doc toolbar */}
+              <div className="flex items-center justify-between px-5 py-3 shrink-0 border-b border-white/10" style={{ background: "rgba(10,10,10,0.7)", backdropFilter: "blur(12px)" }}>
+                <span className="logo-link font-logo text-lg">
+                  <span className="text-white">Jan</span><span className="logo-elia">Elia</span>
+                </span>
+                <div className="flex items-center gap-2">
+                  <a
+                    href="/diploma/examensbevis-jan-elia-351223-6510%20(1).pdf"
+                    download
+                    className="flex items-center gap-1.5 rounded-lg border border-emerald-400/40 bg-emerald-400/10 hover:bg-emerald-400/20 text-emerald-300 hover:text-emerald-200 px-3 py-1.5 text-xs font-medium transition"
+                  >
+                    ⬇️ Download PDF
+                  </a>
+                  <button
+                    onClick={() => setDiplomaOpen(false)}
+                    className="rounded-lg border border-white/10 px-3 py-1.5 text-xs text-neutral-400 hover:text-white hover:border-white/30 transition"
+                  >
+                    ✕
+                  </button>
+                </div>
+              </div>
+
+              {/* PDF — mobile browsers (iOS Safari, mobile Chrome) render PDF iframes blank, so show a fallback there instead */}
+              <iframe
+                src="/diploma/examensbevis-jan-elia-351223-6510%20(1).pdf#navpanes=0&toolbar=0"
+                className="hidden sm:flex flex-1 w-full"
+                title="Jan Elia Diploma"
+              />
+              <div className="flex sm:hidden flex-1 flex-col items-center justify-center gap-4 px-8 text-center bg-neutral-950">
+                <p className="text-sm text-neutral-400">
+                  Inline preview isn&apos;t supported on this device.
+                </p>
+                <a
+                  href="/diploma/examensbevis-jan-elia-351223-6510%20(1).pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="rounded-lg border border-emerald-400/40 bg-emerald-400/10 hover:bg-emerald-400/20 text-emerald-300 px-4 py-2 text-sm font-medium transition"
