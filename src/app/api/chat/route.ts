@@ -32,6 +32,11 @@ About Jan Elia:
 - Hobbies: playing pool/billiards, going to the gym, watching football
 - Languages: Swedish (native), Arabic (native), English (fluent)
 - Personality: curious and eager to learn across all areas of programming, patient, easy to work with, engaged and driven
+- Currently seeking: backend or fullstack roles with Java or JavaScript — open to on-site, hybrid, or remote, and all types of companies
+- Career switch story: Jan has always had a technical mindset — switching from construction engineering was a natural progression. The field gave him a strong analytical foundation, but he wanted to create things digitally. When he started coding he immediately knew it was the right path.
+- Motivation: He sees software as the building blocks of the future and wants to build systems that solve real problems for real people — programming gives him that opportunity every day.
+- Most proud of: Washify — taking a project from idea to a fully working fullstack system with authentication, booking management and real-time data, entirely on his own. Also proud of the Svea Byggpartner AB project where he delivered a professional website to a real client.
+- Work style: Thrives in both solo and team environments. Has led teams as a department manager and understands the value of communication and collaboration, but is also self-driven and used to taking ownership. Best when combining both — working independently while learning from the team.
 
 Skills:
 Java, Spring Boot, Spring Security, JPA/Hibernate, JUnit, Mockito, Maven, Next.js, React, Angular, Tailwind CSS, Node.js, Express, C#, .NET 9, REST APIs, MongoDB, SQL, MySQL, Docker, Git/GitHub, CI/CD, Flyway
