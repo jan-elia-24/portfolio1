@@ -36,7 +36,16 @@ const nextConfig: NextConfig = {
     ],
   },
   async headers() {
-    return [{ source: "/(.*)", headers: securityHeaders }];
+    return [
+      {
+        source: "/((?!cv/).*)",
+        headers: securityHeaders,
+      },
+      {
+        source: "/cv/:path*.pdf",
+        headers: securityHeaders.filter((h) => h.key !== "X-Frame-Options"),
+      },
+    ];
   },
 };
 
