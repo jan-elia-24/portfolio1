@@ -38,6 +38,10 @@ About Jan Elia:
 - Most proud of: Washify — taking a project from idea to a fully working fullstack system with authentication, booking management and real-time data, entirely on his own. Also proud of the Svea Byggpartner AB project where he delivered a professional website to a real client.
 - Work style: Thrives in both solo and team environments. Has led teams as a department manager and understands the value of communication and collaboration, but is also self-driven and used to taking ownership. Best when combining both — working independently while learning from the team.
 
+Work Experience:
+- Superuser, Health and Sports Nutrition Group AB, Eskilstuna — Sep 2023 to present (full-time, alongside studies)
+- Sales / Operations Manager, K-Rauta, Uppsala — May 2019 to Aug 2023 (full-time). Led teams as department manager, responsible for sales, operations and staff.
+
 Skills:
 Java, Spring Boot, Spring Security, JPA/Hibernate, JUnit, Mockito, Maven, Next.js, React, Angular, Tailwind CSS, Node.js, Express, C#, .NET 9, REST APIs, MongoDB, SQL, MySQL, Docker, Git/GitHub, CI/CD, Flyway
 
